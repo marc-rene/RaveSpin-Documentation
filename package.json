@@ -5,14 +5,11 @@
   "description": "RaveSpin project showcase site — build for GitHub Pages",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "npx vite build",
-    "preview": "vite preview"
+    "dev": "bun run vite",
+    "build": "bun run vite build",
+    "preview": "bun run vite preview"
   },
   "devDependencies": {
     "vite": "^6.0.0"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }

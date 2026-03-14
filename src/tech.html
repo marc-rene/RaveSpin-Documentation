@@ -35,63 +35,37 @@
 
     <section class="detail-section">
       <h2>Godot &amp; project setup</h2>
-      <p>RaveSpin is a Godot 4.x project with <code>config/features</code> set to <code>4.6</code> and <code>Mobile</code>. The main scene is loaded from the editor; boot splash uses the project’s warm amber colour and a custom image.</p>
-      <p>Enabled editor plugins:</p>
-      <ul>
-        <li><strong>godot-xr-tools</strong> — XR interaction, movement, hands, staging (e.g. player height, snap zones)</li>
-        <li><strong>waveform_generator</strong> — Waveform export/usage for tracks</li>
-      </ul>
-      <p>Autoloads include <code>XRToolsUserSettings</code> and <code>XRToolsRumbleManager</code> from godot-xr-tools.</p>
+      <p>RaveSpin is a Godot 4.x project with <code>config/features</code> set to <code>4.6</code> and <code>Mobile</code>. Enabled editor plugins: <strong>godot-xr-tools</strong> (XR interaction, movement, hands, staging) and <strong>waveform_generator</strong>. Autoloads include XRToolsUserSettings and XRToolsRumbleManager.</p>
     </section>
 
     <section class="detail-section">
       <h2>OpenXR &amp; Meta Quest</h2>
-      <p>OpenXR is enabled with environment blend mode 2 (e.g. additive/alpha blend for AR-style). Hand tracking is enabled. Meta-specific extensions in use include passthrough; the project also references Meta environment depth and application space warp in shader globals (for future or optional use).</p>
-      <p>Export preset (Android) enables the Meta XR plugin with:</p>
-      <ul>
-        <li>Quest 2, Quest 3, Quest Pro support</li>
-        <li>Passthrough, hand tracking, render model</li>
-        <li>Overlay keyboard</li>
-      </ul>
-      <p>HTC passthrough is referenced in the codebase as well. The Arena scene initialises the XR interface, disables vsync, enables passthrough when supported, and recenters the view on pose recenter.</p>
+      <p>OpenXR enabled with hand tracking. Meta extensions: passthrough, Quest 2/3/Pro support. The Arena scene initialises the XR interface, enables passthrough when supported, and recenters on pose recenter.</p>
     </section>
 
     <section class="detail-section">
       <h2>Audio architecture</h2>
-      <p>Audio is driven by a custom <strong>BUS_MANAGER</strong> (GDScript) that defines the bus layout and effect slots. Buses include Master, Microphone Input, Channel 1/2 FX and Input (and placeholder Channel 3/4 Input).</p>
-      <h3>Per-channel chain</h3>
-      <ul>
-        <li><strong>Trim</strong> (Slot 0) — <code>AudioEffectAmplify</code></li>
-        <li><strong>3-band EQ</strong> (Slot 1) — <code>AudioEffectEQ</code> (6-band), bands mapped to low/mid/high (e.g. 32 Hz, 1 kHz, 10 kHz)</li>
-        <li><strong>Sound colour FX</strong> (Slots 2–3) — Lowpass and highpass filters</li>
-        <li><strong>Beat FX</strong> (Slot 4 when one-FX-at-a-time) — Single beat effect per channel</li>
-      </ul>
-      <h3>Beat FX types (FLX4-style)</h3>
-      <p>One effect active per channel at a time (configurable). Types: Delay, Echo, Reverb, Trans, Flanger, Phaser, Pitch, Crush (lofi distortion), Compressor, Limiter, Band Pass, Panner, Stereo Enhance, Distortion. Implemented with Godot’s <code>AudioEffectDelay</code>, <code>AudioEffectReverb</code>, <code>AudioEffectChorus</code>, <code>AudioEffectPhaser</code>, <code>AudioEffectPitchShift</code>, <code>AudioEffectDistortion</code>, <code>AudioEffectCompressor</code>, <code>AudioEffectLimiter</code>, <code>AudioEffectBandPassFilter</code>, <code>AudioEffectPanner</code>, <code>AudioEffectStereoEnhance</code>.</p>
-      <h3>FX policy</h3>
-      <p>Track FX policy can be: FX disabled, only track 1, only track 2, or both tracks. The LibreBox FX UI (e.g. <code>fx_button.gd</code>) adds/removes beat FX per channel based on this policy and the current “can this track take FX?” state.</p>
+      <p><strong>BUS_MANAGER</strong> defines the bus layout. Per-channel chain: Trim, 3-band EQ, sound colour (lowpass/highpass), beat FX (one at a time per channel). Beat FX types: Delay, Echo, Reverb, Trans, Flanger, Phaser, Pitch, Crush, Compressor, Limiter, Band Pass, Panner, Stereo Enhance, Distortion. FX policy: per-track or both tracks from LibreBox UI.</p>
     </section>
 
     <section class="detail-section">
       <h2>Song &amp; metadata</h2>
-      <p>Tracks are represented by a <strong>Song</strong> resource (<code>Song.gd</code>) with: title, main artist, guest artists, album, genres (from a large <code>EGenre</code> enum), audio file, optional waveform texture, BPM, key/scale (e.g. <code>EMusicKey</code>), origin platform (e.g. local), favourite flag, user sidenote, and optional MusicBrainz ID. Metadata can be auto-filled from WAV tags where available.</p>
+      <p><strong>Song</strong> resource: title, artist(s), album, genres, audio file, waveform, BPM, key/scale, origin platform, favourite, user note, optional MusicBrainz ID.</p>
     </section>
 
     <section class="detail-section">
       <h2>Key scripts &amp; scenes</h2>
       <ul>
-        <li><strong>LibreBox_Manager.gd</strong> — Singleton-style LibreBox: track refs, play/pause, load track into controller, BPM getters, hub refresh.</li>
-        <li><strong>Controller.gd (DJ_Controller)</strong> — Audio players, crossfader, EQ/trim/colour/beat FX knobs, tempo, load track into memory.</li>
-        <li><strong>BUS_MANAGER.gd</strong> — Static bus layout, beat FX enum and names, add/remove/toggle beat FX, EQ weight calculations.</li>
-        <li><strong>arena.gd</strong> — XR interface init, passthrough enable, recenter.</li>
-        <li><strong>LibreBox UI</strong> — Main hub (active track cards, DB meter, BPM spinner), track selection, add track, FX selection menu (e.g. <code>fx_button.gd</code>, <code>fx_selection_menu.gd</code>).</li>
-        <li><strong>DDJ-FLX4</strong> — 3D controller scene and textures (e.g. <code>FLX4_T_FLX4_Top - Clearer.png</code>, slider).</li>
+        <li><strong>LibreBox_Manager.gd</strong> — Track refs, play/pause, load track, BPM getters.</li>
+        <li><strong>Controller.gd (DJ_Controller)</strong> — Audio players, crossfader, EQ/trim/FX knobs, tempo.</li>
+        <li><strong>BUS_MANAGER.gd</strong> — Bus layout, beat FX add/remove/toggle.</li>
+        <li><strong>arena.gd</strong> — XR init, passthrough, recenter.</li>
+        <li><strong>LibreBox UI</strong> — Hub, track selection, add track, FX selection.</li>
+        <li><strong>DDJ-FLX4</strong> — 3D controller scene.</li>
       </ul>
     </section>
 
     <section class="detail-section">
-      <h2>Building &amp; running</h2>
-      <p>Export from Godot using the Android preset with Meta XR enabled. Target arm64-v8a for Quest. No custom CI is committed; deployment is via Godot’s export. For development, open the <code>Godot</code> folder as the project root in Godot 4.6.</p>
       <p><a href="./">← Back to home</a></p>
     </section>
   </main>

@@ -1,21 +1,16 @@
 # RaveSpin-Documentation
 
-Static showcase site for [RaveSpin](https://github.com/marc-rene/RaveSpin). This repo is the website only — build with **Node** or **Bun**. Deploy via GitHub Actions to GitHub Pages.
+Static showcase site for [RaveSpin](https://github.com/marc-rene/RaveSpin). This repo is the website only — build with **Bun** (CI uses Bun). Deploy via GitHub Actions to GitHub Pages.
 
 **Live (after you enable Pages):** `https://<owner>.github.io/RaveSpin-Documentation/`
 
 ---
 
-## Build (Node or Bun)
+## Build (Bun)
 
 From the **repo root**:
 
 ```bash
-# With Node (v18+)
-npm install
-npm run build
-
-# With Bun
 bun install
 bun run build
 ```
@@ -25,7 +20,7 @@ Output is in **`dist/`**. The contents of `dist/` are what gets deployed.
 ## Local preview
 
 ```bash
-npm run preview   # or: bun run preview
+bun run preview
 ```
 
 Serves the built site from `dist/` so you can check links and layout before deploying.
@@ -37,15 +32,14 @@ Serves the built site from `dist/` so you can check links and layout before depl
 This repo includes a workflow that builds and deploys the site on every push to `main`.
 
 1. **Push to `main`** — The workflow runs automatically.
-2. **Enable GitHub Pages** (one-time):
+2. **Enable GitHub Pages** (one-time) if the workflow fails with "Get Pages site failed":
    - Repo → **Settings** → **Pages**
-   - **Source:** Deploy from a branch
-   - **Branch:** `gh-pages` (or **GitHub Actions** if your account uses the new source)
-   - Save
+   - Under **Build and deployment**, set **Source** to **GitHub Actions**
+   - Save. Then re-run the workflow or push again.
 
 3. **Site URL:** `https://<owner>.github.io/RaveSpin-Documentation/`
 
-The workflow uses **`npx vite build`** so the build runs correctly in CI (avoids “vite: Permission denied” on Linux). Base path is set to `/RaveSpin-Documentation/` for project-page URLs.
+The workflow uses **Bun** (`bun install` and `bun run build`) so the build runs correctly in CI (avoids “vite: Permission denied” on Linux). Base path is set to `/RaveSpin-Documentation/` for project-page URLs.
 
 ### If you renamed the repo
 
@@ -64,7 +58,7 @@ and in **`vite.config.js`** you can leave `base` as-is (it reads `VITE_BASE_PATH
 
 If you want to publish from another repo (e.g. your personal site):
 
-1. Build: `npm run build` or `bun run build`
+1. Build: `bun run build`
 2. Copy **everything inside** `dist/` to the root of the target repo.
 3. If that site is served at a **subpath** (e.g. `username.github.io/MySite/`), set `VITE_BASE_PATH=/MySite/` before building, or in `vite.config.js`: `base: '/MySite/'`.
 

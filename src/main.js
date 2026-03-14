@@ -1,6 +1,5 @@
 import './style.css';
 
-// Optional: expand/collapse for "read more" sections on detail pages
 document.querySelectorAll('.expander-trigger').forEach(trigger => {
   trigger.addEventListener('click', () => {
     const content = trigger.nextElementSibling;
