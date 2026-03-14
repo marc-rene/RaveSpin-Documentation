@@ -1,6 +1,6 @@
-# Build the RaveSpin website (Documentation/Website) and deploy to GitHub Pages.
-# After the first run: Repo → Settings → Pages → Source: Deploy from branch → Branch: gh-pages, / (root).
-# Site will be at: https://<owner>.github.io/RaveSpin/
+# Build and deploy this site to GitHub Pages.
+# Repo root = website source. After first run: Settings → Pages → Deploy from branch → gh-pages, / (root).
+# Site URL: https://<owner>.github.io/RaveSpin-Documentation/
 
 name: Deploy website
 
@@ -33,10 +33,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Project page base path (e.g. username.github.io/RaveSpin). Omit for user/org site.
       - name: Build
         run: npm run build
-  
+        env:
+          VITE_BASE_PATH: '/RaveSpin-Documentation/'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -44,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/
+          path: dist
 
   deploy:
     environment:
