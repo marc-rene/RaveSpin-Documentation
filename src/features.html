@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RaveSpin features: virtual DDJ-FLX4, dual decks, beat FX, LibreBox UI, BPM sync, passthrough AR." />
+  <title>Features — RaveSpin</title>
+</head>
+<body>
+  <header class="site-header">
+    <a href="./" class="logo">RaveSpin</a>
+    <nav>
+      <a href="./#features">Features</a>
+      <a href="./#demo">Demo</a>
+      <a href="tech.html">Tech</a>
+      <a href="features.html">Deep dive</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Features</h1>
+    <p class="section-lead">A full breakdown of what RaveSpin does—for both quick reference and deep dives.</p>
+
+    <section class="detail-section">
+      <h2>Virtual DJ controller (DDJ-FLX4 style)</h2>
+      <p>In XR you interact with a 3D replica of a Pioneer-style two-deck controller. You can grab knobs and faders, use the crossfader, and trigger transport controls. The layout mirrors the FLX4 so DJs familiar with that hardware feel at home. The controller is rendered in the 3D scene and can be used in full VR or with passthrough AR so your room stays visible.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>Dual-deck mixing</h2>
+      <ul>
+        <li><strong>Decks:</strong> Two main playback decks (Track 1 &amp; 2). Additional track slots (3 &amp; 4) exist in the data model for future use.</li>
+        <li><strong>Transport:</strong> Load track, play, pause, seek. Playback position and “alpha” (normalised position) are exposed to the UI.</li>
+        <li><strong>Tempo &amp; pitch:</strong> Per-track tempo/pitch adjustment in roughly a ±10% range (pitch scaling).</li>
+        <li><strong>BPM sync:</strong> Sync one track’s BPM to the other; beat alignment is noted as a TODO in the codebase.</li>
+        <li><strong>Crossfader:</strong> Blend between the two channels from the virtual controller.</li>
+      </ul>
+    </section>
+
+    <section class="detail-section">
+      <h2>EQ &amp; sound colour</h2>
+      <p>Each channel has:</p>
+      <ul>
+        <li><strong>Trim</strong> — Input level.</li>
+        <li><strong>3-band EQ</strong> — Low (e.g. 32 Hz), mid (e.g. 1 kHz), high (e.g. 10 kHz).</li>
+        <li><strong>Sound colour FX</strong> — Lowpass and highpass filters (FLX4-style “sound colour”).</li>
+      </ul>
+      <p>All controlled from the virtual controller knobs and reflected in the audio bus chain (see <a href="tech.html">Tech</a>).</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>Beat FX</h2>
+      <p>FLX4-style beat effects, one active per channel at a time (optional “both tracks” policy). List:</p>
+      <ul>
+        <li>Delay, Echo, Reverb, Trans (short delay/feedback for transitions), Flanger, Phaser, Pitch</li>
+        <li>Crush (lofi), Compressor, Limiter, Band Pass, Panner, Stereo Enhance, Distortion</li>
+      </ul>
+      <p>You choose which track(s) receive FX (Track 1 only, Track 2 only, or both) from the LibreBox FX menu. Buttons enable/disable each effect type; the BUS_MANAGER ensures only one beat FX is active per channel when “one at a time” is enabled.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>LibreBox — in-headset UI</h2>
+      <p>LibreBox is the in-VR menu system so you don’t need to take off the headset to change tracks or FX.</p>
+      <ul>
+        <li><strong>Main hub</strong> — Active track cards for the two decks, level (dB) meter, BPM spinner.</li>
+        <li><strong>Track selection</strong> — Browse and load tracks from the song metadata library (track cards show artist, album, BPM, etc.).</li>
+        <li><strong>Add track</strong> — Add tracks to a deck.</li>
+        <li><strong>FX selection</strong> — Grid of beat FX buttons; per-track or both-tracks policy.</li>
+      </ul>
+      <p>Implemented as 2D UI in 3D (e.g. Viewport2D in 3D or similar) so it’s readable and interactive in VR. The hub refreshes when tracks change; active track cards and FX buttons stay in sync with the BUS_MANAGER and controller state.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>Track library &amp; metadata</h2>
+      <p>Each track is a <strong>Song</strong> resource with:</p>
+      <ul>
+        <li>Title, main artist, guest artists, album</li>
+        <li>Genres (from a large enum: electronic, house, techno, hip-hop, rock, etc.)</li>
+        <li>Audio file (stream), optional waveform image</li>
+        <li>BPM, key (note + scale)</li>
+        <li>Origin platform (e.g. local; streaming not implemented)</li>
+        <li>Favourite, user sidenote, optional MusicBrainz ID</li>
+      </ul>
+      <p>Songs are stored under <code>res://Music/Song Metadatas/</code>. Waveforms can be auto-located as <code>*_WAVEFORM.png</code> next to the audio file. The add-on <strong>waveform_generator</strong> helps with waveform export.</strong></p>
+    </section>
+
+    <section class="detail-section">
+      <h2>Passthrough AR</h2>
+      <p>On headsets that support it (e.g. Meta Quest), the Arena enables passthrough so the real world is visible with the virtual controller and UI overlaid. If native passthrough isn’t available, the code falls back to alpha-blend environment mode where supported. Recenter is triggered on XR pose recenter so you can reorient the play space.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2>Multiplayer (design)</h2>
+      <p>Documentation diagrams describe use cases for inviting another user and “2 Users perform together using Rave-Spin multiplayer.” This reflects design intent; implementation status of multiplayer is not documented in the explored code—treat as a future or planned feature.</p>
+    </section>
+
+    <section class="detail-section">
+      <p><a href="./#features">← Back to home</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>RaveSpin — Fourth Year Final Project 2025–2026, TU Dublin · <a href="https://github.com/marc-rene/RaveSpin">GitHub</a></p>
+  </footer>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
