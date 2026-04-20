@@ -187,11 +187,18 @@ body:has(.rave-spin-bg-video) .md-content__inner > :first-child {
 
 /* Frosted-glass sidebars (left nav + right TOC) on the home page.
    Targets .md-sidebar__scrollwrap so Material's positioning/scrolling is
-   preserved — we only skin the inner panel. */
+   preserved — we only skin the inner panel.
+   The position/z-index override is gated behind Material's desktop
+   breakpoint (76.25em) — below that, Material's own mobile drawer CSS
+   takes over and the sidebar slides off-canvas. */
 body:has(.rave-spin-bg-video) .md-sidebar {
   background: transparent;
-  position: relative;
-  z-index: 5;
+}
+@media screen and (min-width: 76.25em) {
+  body:has(.rave-spin-bg-video) .md-sidebar {
+    position: relative;
+    z-index: 5;
+  }
 }
 body:has(.rave-spin-bg-video) .md-sidebar__scrollwrap {
   background: linear-gradient(
@@ -224,14 +231,61 @@ body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title,
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link {
   color: rgba(255, 255, 255, 0.95);
 }
-body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title {
-    
-    color: darkslategrey;
-    
-    font-family: 'Road_Rage', sans-serif;
-    font-size: large;
-    font-weight: 100;
-    letter-spacing: 0.1em;
+
+/* Mobile drawer: Material gives .md-nav--primary a solid white background
+   and .md-nav__title a blue (primary-color) header bar, both of which hide
+   our frosted scrollwrap. Strip those so the glass effect shows through
+   identically on mobile and desktop. */
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav--primary,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav--secondary {
+  background: transparent;
+}
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site {
+  background: transparent;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'Road_Rage', sans-serif;
+  font-size: large;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+}
+
+/* Mobile-specific hammer: at <=76.1875em, Material applies
+   `background-color: var(--md-default-bg-color)` to .md-nav--primary and its
+   nested .md-nav (the drawer body). Its media-query rule ties against ours
+   on specificity, so we win by repeating inside the same breakpoint AND
+   marking !important. Also paint the sidebar container itself with the
+   frosted gradient as a backstop, in case the scrollwrap's margin/rounding
+   leaves bare drawer edges visible. */
+@media screen and (max-width: 76.1875em) {
+  body:has(.rave-spin-bg-video) .md-sidebar--primary {
+    background: linear-gradient(
+      155deg,
+      rgba(70, 72, 88, 0.92) 0%,
+      rgba(42, 44, 56, 0.88) 55%,
+      rgba(24, 26, 34, 0.82) 100%
+    ) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.15);
+            backdrop-filter: blur(26px) saturate(200%) brightness(1.15);
+  }
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav,
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav--primary,
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav--primary .md-nav,
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__list,
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__item,
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__source {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
+  /* Ditch the rounded corners/margin of the scrollwrap on mobile so the
+     drawer fills edge-to-edge cleanly. */
+  body:has(.rave-spin-bg-video) .md-sidebar__scrollwrap {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+  }
 }
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link:hover,
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link:focus {
