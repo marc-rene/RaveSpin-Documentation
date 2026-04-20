@@ -8,10 +8,8 @@
 .rave-spin-logo {
   font-family: 'Road_Rage', sans-serif;
   font-size: 1.6rem;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  display: flex;
-  flex-direction: column;
+  line-height: 1.00;
+  
   align-items: flex-start;
 }
 
@@ -252,6 +250,51 @@ body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site {
   letter-spacing: 0.1em;
 }
 
+/* Stack the mobile drawer's site-title (logo + site_name) vertically and
+   center it, with extra vertical breathing room so the Road_Rage lettering
+   doesn't look squished against the frame or the nav items below. */
+/* Target whichever .md-nav__title actually wraps the logo — on mobile
+   Material uses the bare `.md-nav__title` (no `--site` modifier), on desktop
+   tabs it uses `--site`. Using :has() catches both. */
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title:has(.md-logo),
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
+  gap: 1.75rem !important;
+  padding: 1.1rem 0.75rem 1rem !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+/* The .md-logo anchor is the flex item that wraps our <span.rave-spin-logo>.
+   Material sets a fixed height on the anchor so the second line of the logo
+   overflows and overlaps with the site_name text node. Force the anchor to
+   grow to fit its content. */
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title:has(.md-logo) .md-nav__button,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title:has(.md-logo) .md-logo,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site .md-nav__button,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site .md-logo {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  flex: 0 0 auto !important;
+}
+/* The logo <span> itself — guarantee it can grow and doesn't get collapsed
+   into its parent's line-box. */
+body:has(.rave-spin-bg-video) .md-sidebar .rave-spin-logo {
+  height: auto !important;
+  flex: 0 0 auto !important;
+}
+
 /* Mobile-specific hammer: at <=76.1875em, Material applies
    `background-color: var(--md-default-bg-color)` to .md-nav--primary and its
    nested .md-nav (the drawer body). Its media-query rule ties against ours
@@ -270,14 +313,31 @@ body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site {
     -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.15);
             backdrop-filter: blur(26px) saturate(200%) brightness(1.15);
   }
-  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav,
+  /* Root primary nav + structural bits stay transparent so the drawer's own
+     gradient shows through at the top level. */
+  body:has(.rave-spin-bg-video) .md-sidebar--primary > .md-sidebar__scrollwrap > .md-sidebar__inner > .md-nav,
   body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav--primary,
-  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav--primary .md-nav,
   body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__list,
   body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__item,
   body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__source {
     background-color: transparent !important;
     background: transparent !important;
+  }
+
+  /* BUT the nested slide-in subnavs (.md-nav inside .md-nav__item) MUST have
+     their own opaque gradient — otherwise when Material slides one in over
+     the parent level, the old level shows through and you see stacked nav
+     items ghosting on top of each other. Using a slightly darker/denser
+     version of the drawer gradient so the layering reads as deliberate. */
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__item .md-nav {
+    background: linear-gradient(
+      155deg,
+      rgba(40, 42, 54, 0.97) 0%,
+      rgba(26, 28, 38, 0.96) 55%,
+      rgba(14, 16, 22, 0.95) 100%
+    ) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(180%);
+            backdrop-filter: blur(26px) saturate(180%);
   }
   /* Ditch the rounded corners/margin of the scrollwrap on mobile so the
      drawer fills edge-to-edge cleanly. */
@@ -286,14 +346,22 @@ body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title--site {
     border-radius: 0;
     border: none;
   }
+
+  /* Center the current-section title in the mobile drawer and scale it up
+     10%. The back-arrow button is absolutely positioned by Material so
+     centering the text doesn't disturb it. */
+  body:has(.rave-spin-bg-video) .md-sidebar--primary .md-nav__title {
+    text-align: center;
+    font-size: 1.1em;
+  }
 }
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link:hover,
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link:focus {
-  color: #fff;
+  color: tomato;
 }
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link--active,
 body:has(.rave-spin-bg-video) .md-sidebar .md-nav__item--active > .md-nav__link {
-  color: #fff;
+  color:darkorange;
   font-weight: 600;
 }
 
