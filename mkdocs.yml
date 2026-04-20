@@ -1,0 +1,7 @@
+site_name: RaveSpin XR
+site_url: https://marc-rene.github.io/RaveSpin-Documentation/
+theme:
+  name: material
+  custom_dir: overrides
+extra_css:
+  - stylesheets/extra.css

@@ -1,0 +1,244 @@
+@font-face {
+  font-family: 'Road_Rage';
+  src: url("../assets/Road_Rage.otf") format("opentype");
+  font-display: swap;
+}
+
+/* Header logo (small, top-left nav) */
+.rave-spin-logo {
+  font-family: 'Road_Rage', sans-serif;
+  font-size: 1.6rem;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+@property --logo-hue {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: false;
+}
+@property --logo-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.rave-spin-hero {
+  font-family: 'Road_Rage', sans-serif;
+  line-height: 1.15;
+  text-align: center;
+  margin: 2rem 0 1.5rem;
+  letter-spacing: 0.01em;
+  user-select: none;
+}
+
+.rave-spin-hero .line {
+  display: block;
+  font-size: clamp(3.5rem, 13vw, 8rem);
+  padding: 0.08em 0;
+  background: linear-gradient(
+    var(--logo-angle),
+    hsl(var(--logo-hue), 100%, 55%),
+    hsl(calc(var(--logo-hue) + 45), 100%, 55%)
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  animation: rave-spin-hue-cycle 5s linear infinite;
+}
+
+.rave-spin-hero .line-spin .xr {
+  font-size: 0.38em;
+  vertical-align: 0.55em;
+  letter-spacing: 0.05em;
+}
+
+@keyframes rave-spin-hue-cycle {
+  from { --logo-hue: 0;   --logo-angle: 0deg; }
+  to   { --logo-hue: 360; --logo-angle: 360deg; }
+}
+
+/* Subtitles under the hero */
+.rave-spin-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  /* Dark halo/shadow fading out — acts like a soft drop-out behind the text */
+  text-shadow:
+    0 0 12px rgba(0, 0, 0, 1),
+    0 0 28px rgba(0, 0, 0, 1),
+    0 0 60px rgba(0, 0, 0, 0.95),
+    0 0 110px rgba(0, 0, 0, 0.8),
+    0 0 180px rgba(0, 0, 0, 0.55);
+}
+
+.rave-spin-subtitle a.plain-link,
+.rave-spin-subtitle a.plain-link:hover,
+.rave-spin-subtitle a.plain-link:visited {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* YouTube trailer link under the subtitles */
+.rave-spin-trailer-link {
+  text-align: center;
+  margin: 1.5rem 0 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.rave-spin-trailer-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.rave-spin-trailer-link a:hover {
+  background: rgba(0, 0, 0, 0.72);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+.rave-spin-youtube-icon {
+  height: 1.4em;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Same soft dark halo behind the hero letters so the gradient text pops off the video */
+.rave-spin-hero .line {
+  filter: drop-shadow(0 0 22px rgba(0, 0, 0, 1))
+          drop-shadow(0 0 55px rgba(0, 0, 0, 0.95))
+          drop-shadow(0 0 110px rgba(0, 0, 0, 0.7));
+}
+
+/* Background trailer video */
+.rave-spin-bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  margin: auto;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  /* Soft transparency fade around all four edges — no hard border */
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 85% at center,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+          mask-image: radial-gradient(
+    ellipse 85% 85% at center,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  /* Slight darken so foreground text stays readable */
+  filter: brightness(0.6) contrast(1.05);
+}
+
+/* Only on the home page: let the video show through by making Material's
+   content backgrounds transparent. Scoped via :has() so other pages are
+   untouched. */
+body:has(.rave-spin-bg-video) {
+  background: #050505;
+}
+body:has(.rave-spin-bg-video) .md-main,
+body:has(.rave-spin-bg-video) .md-main__inner,
+body:has(.rave-spin-bg-video) .md-content,
+body:has(.rave-spin-bg-video) .md-content__inner,
+body:has(.rave-spin-bg-video) article.md-content__inner {
+  background: transparent;
+}
+body:has(.rave-spin-bg-video) .md-content__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide the auto-generated "Home" H1 that Material inserts when the markdown
+   has no explicit heading. Also removes the ghost anchor Material puts above
+   the first element (the invisible block reserving space for it). */
+body:has(.rave-spin-bg-video) .md-content__inner > h1:first-child,
+body:has(.rave-spin-bg-video) .md-content__inner > h1:first-of-type {
+  display: none;
+}
+body:has(.rave-spin-bg-video) .md-content__inner > :first-child {
+  margin-top: 0;
+}
+
+/* Frosted-glass sidebars (left nav + right TOC) on the home page.
+   Targets .md-sidebar__scrollwrap so Material's positioning/scrolling is
+   preserved — we only skin the inner panel. */
+body:has(.rave-spin-bg-video) .md-sidebar {
+  background: transparent;
+  position: relative;
+  z-index: 5;
+}
+body:has(.rave-spin-bg-video) .md-sidebar__scrollwrap {
+  background: linear-gradient(
+    155deg,
+    rgba(70, 72, 88, 0.92) 0%,
+    rgba(42, 44, 56, 0.88) 55%,
+    rgba(24, 26, 34, 0.82) 100%
+  );
+  -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.15);
+          backdrop-filter: blur(26px) saturate(200%) brightness(1.15);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  margin: 0.75rem 0.5rem;
+  padding: 0.5rem 0.25rem;
+  overflow: hidden;
+}
+
+/* Ensure the inner scrolling area inherits the rounding cleanly */
+body:has(.rave-spin-bg-video) .md-sidebar__inner {
+  padding: 0.25rem 0.5rem;
+}
+
+/* Force light text in the sidebar so it reads against the dark glass,
+   regardless of the active Material palette. */
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link {
+  color: rgba(255, 255, 255, 0.95);
+}
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__title {
+    
+    color: darkslategrey;
+    
+    font-family: 'Road_Rage', sans-serif;
+    font-size: large;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+}
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link:hover,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link:focus {
+  color: #fff;
+}
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__link--active,
+body:has(.rave-spin-bg-video) .md-sidebar .md-nav__item--active > .md-nav__link {
+  color: #fff;
+  font-weight: 600;
+}
