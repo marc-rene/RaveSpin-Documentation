@@ -1,0 +1,2199 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://marc-rene.github.io/RaveSpin-Documentation/Codebase/Audio/Properties/Track%20Origins/">
+      
+      
+        <link rel="prev" href="../Music%20Key%20Class/">
+      
+      
+        <link rel="next" href="../../../DJ%20Controller/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Track Origins - RaveSpin XR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#etrackorigins" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="RaveSpin XR" class="md-header__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaveSpin XR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Track Origins
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="RaveSpin XR" class="md-nav__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    RaveSpin XR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Addons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Addons/Waveform%20Generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveform Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Album_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Album Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Artist%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artist Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio%20Metadata%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Metadata Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bus%20Manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Song%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Properties
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Properties
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Genre%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genre Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Music%20Key%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Key Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DJ Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DJ%20Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DJ%20Controller/DJ_Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DJ%20Controller/Controls/Base_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DJ%20Controller/Controls/Knob_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DJ%20Controller/Controls/Performance_Pad_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Pad Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DJ%20Controller/Controls/Slider_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slider Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Global
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Player_Finger_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Finger Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Scripts_Arena_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts Arena Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Startxr_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startxr Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Librebox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Ui_Librebox_Components_Recording_Gd_Recording_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Active_Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Bpm_Spinner_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bpm Spinner Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Db_Meter_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Meter Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Librebox_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_5" id="__nav_3_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Add_Track_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Track Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Librebox_Trackselection_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Trackselection Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Trackdeleteconfirmui_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trackdeleteconfirmui Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- DO NOT EDIT THIS FILE!!! -->
+<!-- Generated automatically from Godot engine sources. -->
+<!-- Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. -->
+<!-- XML source: https://github.com/godotengine/godot/tree/master/../RaveSpin/Documentation/gen_docs/ETrackOrigins.xml. -->
+
+<p><a id="class-etrackorigins"></a></p>
+<h1 id="etrackorigins">ETrackOrigins</h1>
+<p><strong>Inherits:</strong> <code>Object</code></p>
+<p>Catalogue of where a Track can origininate from Maps platform labels to enums and logos.</p>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th><code>StringName</code></th>
+<th><a href="#class-etrackorigins-method-track-origin-tostring">Track_Origin_toString</a>(origin: <a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a></td>
+<td><a href="#class-etrackorigins-method-track-origin-toenum">Track_Origin_toEnum</a>(origin: <code>StringName</code>)</td>
+</tr>
+<tr>
+<td><code>StringName</code></td>
+<td><a href="#class-etrackorigins-method-get-origin-platform-logo">Get_Origin_Platform_Logo</a>(platform: <a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a>)</td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-etrackorigins-method-track-origins-str-to-track-origins-enum">Track_Origins_str_to_Track_Origins_enum</a>(string_version: <code>String</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="enumerations">Enumerations</h2>
+<p><a id="enum-etrackorigins-track-origins-enum"></a></p>
+<p>enum <strong>Track_Origins_enum</strong>: <a href="#enum-etrackorigins-track-origins-enum">🔗</a></p>
+<p><a id="class-etrackorigins-constant-other"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>OTHER</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-local-storage"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>LOCAL_STORAGE</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-local-network-smb"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>LOCAL_NETWORK_SMB</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-local-network-dlna-upnp"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>LOCAL_NETWORK_DLNA_UPNP</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-direct-url-http"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DIRECT_URL_HTTP</strong> = <code>4</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-ftp"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>FTP</strong> = <code>5</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-sftp"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>SFTP</strong> = <code>6</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-spotify"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>SPOTIFY</strong> = <code>7</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-apple-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>APPLE_MUSIC</strong> = <code>8</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-amazon-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>AMAZON_MUSIC</strong> = <code>9</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-youtube-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>YOUTUBE_MUSIC</strong> = <code>10</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-deezer"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DEEZER</strong> = <code>11</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-tidal"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>TIDAL</strong> = <code>12</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-qobuz"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>QOBUZ</strong> = <code>13</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-pandora"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>PANDORA</strong> = <code>14</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-iheartradio"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>IHEARTRADIO</strong> = <code>15</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-napster"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>NAPSTER</strong> = <code>16</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-itunes-store"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ITUNES_STORE</strong> = <code>17</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-onedrive"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ONEDRIVE</strong> = <code>18</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-google-drive"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>GOOGLE_DRIVE</strong> = <code>19</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-dropbox"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DROPBOX</strong> = <code>20</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-icloud-drive"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ICLOUD_DRIVE</strong> = <code>21</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-mega"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MEGA</strong> = <code>22</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-nextcloud"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>NEXTCLOUD</strong> = <code>23</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-soundcloud"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>SOUNDCLOUD</strong> = <code>24</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-bandcamp"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BANDCAMP</strong> = <code>25</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-youtube"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>YOUTUBE</strong> = <code>26</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-tiktok"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>TIKTOK</strong> = <code>27</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-instagram-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>INSTAGRAM_MUSIC</strong> = <code>28</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-mixcloud"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MIXCLOUD</strong> = <code>29</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-audiomack"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>AUDIOMACK</strong> = <code>30</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-hearthis-at"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>HEARTHIS_AT</strong> = <code>31</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-reverb-nation"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>REVERB_NATION</strong> = <code>32</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-beatport"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BEATPORT</strong> = <code>33</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-beatsource"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BEATSOURCE</strong> = <code>34</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-traxsource"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>TRAXSOURCE</strong> = <code>35</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-juno-download"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>JUNO_DOWNLOAD</strong> = <code>36</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-digital7"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DIGITAL7</strong> = <code>37</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-hdtracks"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>HDTRACKS</strong> = <code>38</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-bleep"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BLEEP</strong> = <code>39</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-boomkat"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BOOMKAT</strong> = <code>40</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-bpm-supreme"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BPM_SUPREME</strong> = <code>41</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-djcity"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DJCITY</strong> = <code>42</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-zipdj"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ZIPDJ</strong> = <code>43</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-digital-dj-pool"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DIGITAL_DJ_POOL</strong> = <code>44</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-direct-music-service-dms"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>DIRECT_MUSIC_SERVICE_DMS</strong> = <code>45</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-yandex-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>YANDEX_MUSIC</strong> = <code>46</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-vk-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>VK_MUSIC</strong> = <code>47</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-zvuk"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ZVUK</strong> = <code>48</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-odnoklassniki-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ODNOKLASSNIKI_MUSIC</strong> = <code>49</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-mts-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MTS_MUSIC</strong> = <code>50</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-boom-vk-uma"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BOOM_VK_UMA</strong> = <code>51</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-qq-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>QQ_MUSIC</strong> = <code>52</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-netease-cloud-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>NETEASE_CLOUD_MUSIC</strong> = <code>53</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-kugou-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>KUGOU_MUSIC</strong> = <code>54</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-kuwo-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>KUWO_MUSIC</strong> = <code>55</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-migu-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MIGU_MUSIC</strong> = <code>56</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-xiami-legacy"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>XIAMI_LEGACY</strong> = <code>57</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-line-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>LINE_MUSIC</strong> = <code>58</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-awa"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>AWA</strong> = <code>59</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-recochoku"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>RECOCHOKU</strong> = <code>60</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-kkbox"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>KKBOX</strong> = <code>61</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-melon"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MELON</strong> = <code>62</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-genie-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>GENIE_MUSIC</strong> = <code>63</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-flo"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>FLO</strong> = <code>64</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-jiosaavn"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>JIOSAAVN</strong> = <code>65</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-gaana"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>GAANA</strong> = <code>66</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-wynk-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>WYNK_MUSIC</strong> = <code>67</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-hungama-music"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>HUNGAMA_MUSIC</strong> = <code>68</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-moov"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MOOV</strong> = <code>69</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-joox"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>JOOX</strong> = <code>70</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-zing-mp3"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ZING_MP3</strong> = <code>71</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-nhaccuatui"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>NHACCUATUI</strong> = <code>72</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-langit-musik"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>LANGIT_MUSIK</strong> = <code>73</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-anghami"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>ANGHAMI</strong> = <code>74</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-boomplay"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>BOOMPLAY</strong> = <code>75</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-mdundo"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>MDUNDO</strong> = <code>76</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-etrackorigins-constant-naxos-music-library"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>NAXOS_MUSIC_LIBRARY</strong> = <code>77</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="constants">Constants</h2>
+<p><a id="class-etrackorigins-constant-track-origins-str"></a></p>
+<p><strong>Track_Origins_str</strong> = <code>Array[StringName]([&amp;"Other", &amp;"Local Storage", &amp;"Local Network (SMB)", &amp;"Local Network (DLNA/UPnP)", &amp;"Direct URL (HTTP)", &amp;"FTP", &amp;"SFTP", &amp;"Spotify", &amp;"Apple Music", &amp;"Amazon Music", &amp;"YouTube Music", &amp;"Deezer", &amp;"TIDAL", &amp;"Qobuz", &amp;"Pandora", &amp;"iHeartRadio", &amp;"Napster", &amp;"iTunes Store", &amp;"OneDrive", &amp;"Google Drive", &amp;"Dropbox", &amp;"iCloud Drive", &amp;"MEGA", &amp;"Nextcloud", &amp;"SoundCloud", &amp;"Bandcamp", &amp;"YouTube", &amp;"TikTok", &amp;"Instagram (Music)", &amp;"Mixcloud", &amp;"Audiomack", &amp;"HearThis.at", &amp;"Reverb Nation", &amp;"Beatport", &amp;"Beatsource", &amp;"Traxsource", &amp;"Juno Download", &amp;"7-Digital", &amp;"HDtracks", &amp;"Bleep", &amp;"Boomkat", &amp;"BPM Supreme", &amp;"DJcity", &amp;"ZIPDJ", &amp;"Digital DJ Pool", &amp;"Direct Music Service (DMS)", &amp;"Yandex Music", &amp;"VK Music", &amp;"Zvuk", &amp;"Odnoklassniki Music", &amp;"MTS Music", &amp;"BOOM (VK/UMA)", &amp;"QQ Music", &amp;"NetEase Cloud Music", &amp;"KuGou Music", &amp;"KuWo Music", &amp;"Migu Music", &amp;"Xiami (legacy)", &amp;"Line Music", &amp;"AWA", &amp;"Recochoku", &amp;"KKBOX", &amp;"Melon", &amp;"Genie Music", &amp;"FLO", &amp;"JioSaavn", &amp;"Gaana", &amp;"Wynk Music", &amp;"Hungama Music", &amp;"MOOV", &amp;"JOOX", &amp;"Zing MP3", &amp;"NhacCuaTui", &amp;"Langit Musik", &amp;"Anghami", &amp;"Boomplay", &amp;"Mdundo", &amp;"Naxos Music Library"])</code> <a href="#class-etrackorigins-constant-track-origins-str">🔗</a></p>
+<p>All known source platform labels used by metadata and UI</p>
+<hr />
+<h2 id="method-descriptions">Method Descriptions</h2>
+<p><a id="class-etrackorigins-method-track-origin-tostring"></a></p>
+<p><code>StringName</code> <strong>Track_Origin_toString</strong>(origin: <a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a>)  <a href="#class-etrackorigins-method-track-origin-tostring">🔗</a></p>
+<p>Converts origin enum to display string.</p>
+<hr />
+<p><a id="class-etrackorigins-method-track-origin-toenum"></a></p>
+<p><a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>Track_Origin_toEnum</strong>(origin: <code>StringName</code>)  <a href="#class-etrackorigins-method-track-origin-toenum">🔗</a></p>
+<p>Converts origin display string to enum value.</p>
+<hr />
+<p><a id="class-etrackorigins-method-get-origin-platform-logo"></a></p>
+<p><code>StringName</code> <strong>Get_Origin_Platform_Logo</strong>(platform: <a href="#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a>)  <a href="#class-etrackorigins-method-get-origin-platform-logo">🔗</a></p>
+<p>Returns UI logo texture path for a given source platform.</p>
+<hr />
+<p><a id="class-etrackorigins-method-track-origins-str-to-track-origins-enum"></a></p>
+<p><code>Variant</code> <strong>Track_Origins_str_to_Track_Origins_enum</strong>(string_version: <code>String</code>)  <a href="#class-etrackorigins-method-track-origins-str-to-track-origins-enum">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2394 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://marc-rene.github.io/RaveSpin-Documentation/Codebase/Librebox/Ui_Librebox_Components_Recording_Gd_Recording_Gd_Class/">
+      
+      
+        <link rel="prev" href="../Language_Manager_Class/">
+      
+      
+        <link rel="next" href="../Hub/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Ui Librebox Components Recording Gd Recording Gd Class - RaveSpin XR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uilibreboxcomponentsrecordinggd_recordinggd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="RaveSpin XR" class="md-header__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaveSpin XR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ui Librebox Components Recording Gd Recording Gd Class
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RaveSpin XR" class="md-nav__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    RaveSpin XR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Addons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Addons/Waveform%20Generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveform Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Album_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Album Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Artist%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artist Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Audio%20Metadata%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Metadata Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Bus%20Manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Song%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Properties
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Properties
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Properties/Genre%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genre Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Properties/Music%20Key%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Key Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Properties/Track%20Origins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DJ Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/DJ_Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Base_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Knob_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Performance_Pad_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Pad Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Slider_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slider Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Global
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Player_Finger_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Finger Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Scripts_Arena_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts Arena Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Startxr_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startxr Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Librebox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hub/Active_Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hub/Bpm_Spinner_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bpm Spinner Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hub/Db_Meter_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Meter Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hub/Librebox_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_5" id="__nav_3_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Track%20Management/Add_Track_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Track Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Track%20Management/Librebox_Trackselection_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Trackselection Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Track%20Management/Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Track%20Management/Trackdeleteconfirmui_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trackdeleteconfirmui Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- DO NOT EDIT THIS FILE!!! -->
+<!-- Generated automatically from Godot engine sources. -->
+<!-- Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. -->
+<!-- XML source: https://github.com/godotengine/godot/tree/master/../RaveSpin/Documentation/gen_docs/UI--LibreBox--Components--Recording--gd_recording.gd.xml. -->
+
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd"></a></p>
+<h1 id="uilibreboxcomponentsrecordinggd_recordinggd">“UI/LibreBox/Components/Recording/gd_recording.gd”</h1>
+<p><strong>Inherits:</strong> <code>PanelContainer</code></p>
+<p>There is currently no description for this class. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th><code>Container</code></th>
+<th><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-main-container">main_container</a></th>
+<th><code>&lt;unknown&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Label</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-status-label">_status_label</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>CheckButton</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-record-button">_record_button</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Label</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-location-label">_save_location_label</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Label</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-location-prefix-label">_save_location_prefix_label</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>CheckButton</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-enable-mic-button">_enable_mic_button</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>AudioEffectRecord</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-record-effect">_record_effect</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>Tween</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-recording-pulse-tween">_recording_pulse_tween</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>Thread</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-thread">_save_thread</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>AudioStreamPlayer</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-player">_mic_monitor_player</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>AudioStreamGeneratorPlayback</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-playback">_mic_monitor_playback</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-db">_mic_monitor_db</a></td>
+<td><code>-80.0</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-is-recording">_is_recording</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-in-progress">_save_in_progress</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-status-translation-key">_status_translation_key</a></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-property-status-raw-text">_status_raw_text</a></td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ready">_ready</a>()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-process">_process</a>(_delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-exit-tree">_exit_tree</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-notification">_notification</a>(what: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-refresh-localized-ui">_refresh_localized_ui</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-on-record-button-toggled">_on_record_button_toggled</a>(pressed: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-start-recording">_start_recording</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-stop-recording">_stop_recording</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-start-save-thread">_start_save_thread</a>(recorded_stream: <code>AudioStreamWAV</code>, save_path: <code>String</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-poll-save-thread">_poll_save_thread</a>()</td>
+</tr>
+<tr>
+<td><code>Dictionary</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-thread-save-recording">_thread_save_recording</a>(recorded_stream: <code>AudioStreamWAV</code>, save_path: <code>String</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-on-enable-microphone-toggled">_on_enable_microphone_toggled</a>(enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-apply-microphone-enabled-state">_apply_microphone_enabled_state</a>(enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-mic-monitor-player">_ensure_mic_monitor_player</a>()</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-android-mic-permission">_ensure_android_mic_permission</a>()</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-has-android-mic-permission">_has_android_mic_permission</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-debug-print-android-permission-state">_debug_print_android_permission_state</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-update-mic-monitor">_update_mic_monitor</a>()</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-get-controller-mic-knob-value">_get_controller_mic_knob_value</a>()</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-map-mic-knob-to-linear-gain">_map_mic_knob_to_linear_gain</a>(alpha: <code>float</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-is-mic-level-too-low">_is_mic_level_too_low</a>()</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-method-get-mic-monitor-db">get_mic_monitor_db</a>()</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-recordings-directory">_ensure_recordings_directory</a>()</td>
+</tr>
+<tr>
+<td><code>AudioEffectRecord</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-master-record-effect">_ensure_master_record_effect</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-start-recording-pulse">_start_recording_pulse</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-stop-recording-pulse">_stop_recording_pulse</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-set-status-localized">_set_status_localized</a>(key: <code>String</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-set-status-raw">_set_status_raw</a>(raw_text: <code>String</code>)</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-make-timestamp-string">_make_timestamp_string</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-debug-print-user-storage">_debug_print_user_storage</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-print-directory-contents">_print_directory_contents</a>(path: <code>String</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="constants">Constants</h2>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-recordings-dir"></a></p>
+<p><strong>RECORDINGS_DIR</strong> = <code>"user://Recordings"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-recordings-dir">🔗</a></p>
+<p>Recording panel controller. Captures master output to WAV, handles mic input toggling, and shows recording status.</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-master-bus-name"></a></p>
+<p><strong>MASTER_BUS_NAME</strong> = <code>"Master"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-master-bus-name">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-mic-bus-name"></a></p>
+<p><strong>MIC_BUS_NAME</strong> = <code>"Microphone Input"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-mic-bus-name">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-android-mic-permission"></a></p>
+<p><strong>ANDROID_MIC_PERMISSION</strong> = <code>"android.permission.RECORD_AUDIO"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-android-mic-permission">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-mic-na-threshold"></a></p>
+<p><strong>MIC_NA_THRESHOLD</strong> = <code>0.1</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-mic-na-threshold">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-mic-monitor-attenuation"></a></p>
+<p><strong>MIC_MONITOR_ATTENUATION</strong> = <code>0.6</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-mic-monitor-attenuation">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-mic-monitor-buffer-seconds"></a></p>
+<p><strong>MIC_MONITOR_BUFFER_SECONDS</strong> = <code>0.25</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-mic-monitor-buffer-seconds">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-status-idle"></a></p>
+<p><strong>KEY_RECORDING_STATUS_IDLE</strong> = <code>"KEY_RECORDING_STATUS"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-status-idle">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-start"></a></p>
+<p><strong>KEY_RECORDING_START</strong> = <code>"KEY_START_RECORDING"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-start">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-stop"></a></p>
+<p><strong>KEY_RECORDING_STOP</strong> = <code>"KEY_STOP_RECORDING"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-stop">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-started"></a></p>
+<p><strong>KEY_RECORDING_STARTED</strong> = <code>"KEY_RECORDING_STARTED"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-started">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-saving"></a></p>
+<p><strong>KEY_RECORDING_SAVING</strong> = <code>"KEY_RECORDING_SAVING"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-saving">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-saved-to"></a></p>
+<p><strong>KEY_RECORDING_SAVED_TO</strong> = <code>"KEY_RECORDING_SAVED_TO"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-saved-to">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-save-in-progress"></a></p>
+<p><strong>KEY_RECORDING_SAVE_IN_PROGRESS</strong> = <code>"KEY_RECORDING_SAVE_IN_PROGRESS"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-save-in-progress">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-enable-microphone"></a></p>
+<p><strong>KEY_ENABLE_MICROPHONE</strong> = <code>"KEY_ENABLE_MICROPHONE"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-enable-microphone">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-save-location"></a></p>
+<p><strong>KEY_RECORDING_SAVE_LOCATION</strong> = <code>"KEY_RECORDING_SAVE_LOCATION"</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-constant-key-recording-save-location">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="property-descriptions">Property Descriptions</h2>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-main-container"></a></p>
+<p><code>Container</code> <strong>main_container</strong> = <code>&lt;unknown&gt;</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-main-container">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-status-label"></a></p>
+<p><code>Label</code> <strong>_status_label</strong> = <code>&lt;unknown&gt;</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-status-label">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-record-button"></a></p>
+<p><code>CheckButton</code> <strong>_record_button</strong> = <code>&lt;unknown&gt;</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-record-button">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-save-location-label"></a></p>
+<p><code>Label</code> <strong>_save_location_label</strong> = <code>&lt;unknown&gt;</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-location-label">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-save-location-prefix-label"></a></p>
+<p><code>Label</code> <strong>_save_location_prefix_label</strong> = <code>&lt;unknown&gt;</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-location-prefix-label">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-enable-mic-button"></a></p>
+<p><code>CheckButton</code> <strong>_enable_mic_button</strong> = <code>&lt;unknown&gt;</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-enable-mic-button">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-record-effect"></a></p>
+<p><code>AudioEffectRecord</code> <strong>_record_effect</strong> = <code>null</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-record-effect">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-recording-pulse-tween"></a></p>
+<p><code>Tween</code> <strong>_recording_pulse_tween</strong> = <code>null</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-recording-pulse-tween">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-save-thread"></a></p>
+<p><code>Thread</code> <strong>_save_thread</strong> = <code>null</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-thread">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-player"></a></p>
+<p><code>AudioStreamPlayer</code> <strong>_mic_monitor_player</strong> = <code>null</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-player">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-playback"></a></p>
+<p><code>AudioStreamGeneratorPlayback</code> <strong>_mic_monitor_playback</strong> = <code>null</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-playback">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-db"></a></p>
+<p><code>float</code> <strong>_mic_monitor_db</strong> = <code>-80.0</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-mic-monitor-db">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-is-recording"></a></p>
+<p><code>bool</code> <strong>_is_recording</strong> = <code>false</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-is-recording">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-save-in-progress"></a></p>
+<p><code>bool</code> <strong>_save_in_progress</strong> = <code>false</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-save-in-progress">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-status-translation-key"></a></p>
+<p><code>String</code> <strong>_status_translation_key</strong> = <code>""</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-status-translation-key">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-property-status-raw-text"></a></p>
+<p><code>String</code> <strong>_status_raw_text</strong> = <code>""</code> <a href="#class-ui-librebox-components-recording-gd-recording-gd-property-status-raw-text">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="method-descriptions">Method Descriptions</h2>
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-ready"></a></p>
+<p><strong>_ready</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ready">🔗</a></p>
+<p>Wires UI events, validates recording setup, and applies initial mic state.</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-process"></a></p>
+<p><strong>_process</strong>(_delta: <code>float</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-process">🔗</a></p>
+<p>Updates mic monitor and save-thread status.</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-exit-tree"></a></p>
+<p><strong>_exit_tree</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-exit-tree">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-notification"></a></p>
+<p><strong>_notification</strong>(what: <code>int</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-notification">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-refresh-localized-ui"></a></p>
+<p><strong>_refresh_localized_ui</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-refresh-localized-ui">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-on-record-button-toggled"></a></p>
+<p><strong>_on_record_button_toggled</strong>(pressed: <code>bool</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-on-record-button-toggled">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-start-recording"></a></p>
+<p><strong>_start_recording</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-start-recording">🔗</a></p>
+<p>Starts recording on the Master bus.</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-stop-recording"></a></p>
+<p><strong>_stop_recording</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-stop-recording">🔗</a></p>
+<p>Stops recording and starts async save to user://Recordings.</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-start-save-thread"></a></p>
+<p><strong>_start_save_thread</strong>(recorded_stream: <code>AudioStreamWAV</code>, save_path: <code>String</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-start-save-thread">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-poll-save-thread"></a></p>
+<p><strong>_poll_save_thread</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-poll-save-thread">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-thread-save-recording"></a></p>
+<p><code>Dictionary</code> <strong>_thread_save_recording</strong>(recorded_stream: <code>AudioStreamWAV</code>, save_path: <code>String</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-thread-save-recording">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-on-enable-microphone-toggled"></a></p>
+<p><strong>_on_enable_microphone_toggled</strong>(enabled: <code>bool</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-on-enable-microphone-toggled">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-apply-microphone-enabled-state"></a></p>
+<p><strong>_apply_microphone_enabled_state</strong>(enabled: <code>bool</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-apply-microphone-enabled-state">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-mic-monitor-player"></a></p>
+<p><strong>_ensure_mic_monitor_player</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-mic-monitor-player">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-android-mic-permission"></a></p>
+<p><code>bool</code> <strong>_ensure_android_mic_permission</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-android-mic-permission">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-has-android-mic-permission"></a></p>
+<p><code>bool</code> <strong>_has_android_mic_permission</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-has-android-mic-permission">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-debug-print-android-permission-state"></a></p>
+<p><strong>_debug_print_android_permission_state</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-debug-print-android-permission-state">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-update-mic-monitor"></a></p>
+<p><strong>_update_mic_monitor</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-update-mic-monitor">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-get-controller-mic-knob-value"></a></p>
+<p><code>float</code> <strong>_get_controller_mic_knob_value</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-get-controller-mic-knob-value">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-map-mic-knob-to-linear-gain"></a></p>
+<p><code>float</code> <strong>_map_mic_knob_to_linear_gain</strong>(alpha: <code>float</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-map-mic-knob-to-linear-gain">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-is-mic-level-too-low"></a></p>
+<p><code>bool</code> <strong>_is_mic_level_too_low</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-is-mic-level-too-low">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-method-get-mic-monitor-db"></a></p>
+<p><code>float</code> <strong>get_mic_monitor_db</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-method-get-mic-monitor-db">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-recordings-directory"></a></p>
+<p><code>int</code> <strong>_ensure_recordings_directory</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-recordings-directory">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-master-record-effect"></a></p>
+<p><code>AudioEffectRecord</code> <strong>_ensure_master_record_effect</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-ensure-master-record-effect">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-start-recording-pulse"></a></p>
+<p><strong>_start_recording_pulse</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-start-recording-pulse">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-stop-recording-pulse"></a></p>
+<p><strong>_stop_recording_pulse</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-stop-recording-pulse">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-set-status-localized"></a></p>
+<p><strong>_set_status_localized</strong>(key: <code>String</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-set-status-localized">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-set-status-raw"></a></p>
+<p><strong>_set_status_raw</strong>(raw_text: <code>String</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-set-status-raw">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-make-timestamp-string"></a></p>
+<p><code>String</code> <strong>_make_timestamp_string</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-make-timestamp-string">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-debug-print-user-storage"></a></p>
+<p><strong>_debug_print_user_storage</strong>() <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-debug-print-user-storage">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-ui-librebox-components-recording-gd-recording-gd-private-method-print-directory-contents"></a></p>
+<p><strong>_print_directory_contents</strong>(path: <code>String</code>) <a href="#class-ui-librebox-components-recording-gd-recording-gd-private-method-print-directory-contents">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

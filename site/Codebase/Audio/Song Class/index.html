@@ -1,0 +1,2226 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://marc-rene.github.io/RaveSpin-Documentation/Codebase/Audio/Song%20Class/">
+      
+      
+        <link rel="prev" href="../Bus%20Manager/">
+      
+      
+        <link rel="next" href="../Properties/Genre%20Class/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Song Class - RaveSpin XR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#song" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="RaveSpin XR" class="md-header__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaveSpin XR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Song Class
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RaveSpin XR" class="md-nav__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    RaveSpin XR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Addons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Addons/Waveform%20Generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveform Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Album_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Album Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Artist%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artist Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Audio%20Metadata%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Metadata Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bus%20Manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Properties
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Properties
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Properties/Genre%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genre Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Properties/Music%20Key%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Key Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Properties/Track%20Origins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DJ Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/DJ_Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Base_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Knob_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Performance_Pad_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Pad Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Slider_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slider Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Global
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Player_Finger_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Finger Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Scripts_Arena_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts Arena Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Startxr_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startxr Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Librebox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Ui_Librebox_Components_Recording_Gd_Recording_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Active_Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Bpm_Spinner_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bpm Spinner Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Db_Meter_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Meter Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Librebox_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_5" id="__nav_3_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Add_Track_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Track Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Librebox_Trackselection_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Trackselection Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Trackdeleteconfirmui_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trackdeleteconfirmui Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- DO NOT EDIT THIS FILE!!! -->
+<!-- Generated automatically from Godot engine sources. -->
+<!-- Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. -->
+<!-- XML source: https://github.com/godotengine/godot/tree/master/../RaveSpin/Documentation/gen_docs/Song.xml. -->
+
+<p><a id="class-song"></a></p>
+<h1 id="song">Song</h1>
+<p><strong>Inherits:</strong> <code>Resource</code></p>
+<p>There is currently no description for this class. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th><code>StringName</code></th>
+<th><a href="#class-song-property-song-title">Song_Title</a></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Artist%20Class/#class-artist">Artist</a></td>
+<td><a href="#class-song-property-main-artist">Main_Artist</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Array[<a href="../Artist%20Class/#class-artist">Artist</a>]</td>
+<td><a href="#class-song-property-guest-artists">Guest_Artists</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../Album_Class/#class-album">Album</a></td>
+<td><a href="#class-song-property-song-album">Song_Album</a></td>
+<td></td>
+</tr>
+<tr>
+<td>EGenre.E_ID3Genres[]</td>
+<td><a href="#class-song-property-song-genres">Song_Genres</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AudioStream</code></td>
+<td><a href="#class-song-property-audio-file">Audio_File</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-song-property-audio-file-path">Audio_File_Path</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Texture2D</code></td>
+<td><a href="#class-song-property-audio-file-waveform">Audio_File_Waveform</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-song-property-track-bpm">Track_BPM</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../Properties/Music%20Key%20Class/#enum-emusickey-m-notes-enum">m_notes_enum</a></td>
+<td><a href="#class-song-property-track-key-note">Track_Key_Note</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../Properties/Music%20Key%20Class/#enum-emusickey-m-scales-enum">m_scales_enum</a></td>
+<td><a href="#class-song-property-track-scale">Track_Scale</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../Properties/Music%20Key%20Class/#class-emusickey">EMusicKey</a></td>
+<td><a href="#class-song-property-track-key">Track_Key</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Properties/Track%20Origins/#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a></td>
+<td><a href="#class-song-property-song-origin-platform">Song_Origin_Platform</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-song-property-favourite">Favourite</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-song-property-user-sidenote">User_Sidenote</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>StringName</code></td>
+<td><a href="#class-song-property-musicbrainz-id">MusicBrainz_ID</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-song-property-attempt-find-waveform-texture">attempt_find_waveform_texture</a></td>
+<td><code>Attempt_Find_waveform</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-song-property-attempt-populate">attempt_populate</a></td>
+<td><code>Attempt_Automatic_Data_Fill_From_Audio_File</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th><code>String</code></th>
+<th><a href="#class-song-method-id3-to-displaytitle">Id3_to_DisplayTitle</a>(Genre_ID: <code>int</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><a href="#class-song-method-refresh-music-key">Refresh_Music_Key</a>()</td>
+</tr>
+<tr>
+<td><code>AudioStream</code></td>
+<td><a href="#class-song-method-get-audio-stream">get_audio_stream</a>()</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-song-method-attempt-find-waveform">Attempt_Find_waveform</a>()</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-song-method-attempt-find-waveform-from-audio-file-path">Attempt_Find_waveform_from_audio_file_path</a>()</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-song-private-method-sanitize-waveform-base-name">_sanitize_waveform_base_name</a>(raw_base_name: <code>String</code>)</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-song-private-method-android-external-files-fallback">_android_external_files_fallback</a>(internal_global_path: <code>String</code>)</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-song-private-method-android-alt-internal-files-fallback">_android_alt_internal_files_fallback</a>(internal_global_path: <code>String</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-song-private-method-ready">_ready</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-song-method-attempt-automatic-data-fill-from-audio-file">Attempt_Automatic_Data_Fill_From_Audio_File</a>()</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-song-private-method-to-string">_to_string</a>()</td>
+</tr>
+<tr>
+<td><code>PackedStringArray</code></td>
+<td><a href="#class-song-method-get-all-song-paths">Get_All_Song_Paths</a>()</td>
+</tr>
+<tr>
+<td><code>Dictionary</code></td>
+<td><a href="#class-song-method-try-delete-song-at-metadata-path">try_delete_song_at_metadata_path</a>(metadata_resource_path: <code>String</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="constants">Constants</h2>
+<p><a id="class-song-constant-root-music-dir"></a></p>
+<p><strong>ROOT_MUSIC_DIR</strong> = <code>"res://Music/Song Metadatas/"</code> <a href="#class-song-constant-root-music-dir">🔗</a></p>
+<p>Song metadata resource used by LibreBox and DJ_Controller. Stores music metadata plus stream/waveform references for built-in and user-imported tracks. Root directory for built-in song metadata resources.</p>
+<p><a id="class-song-constant-user-song-metadata-dir"></a></p>
+<p><strong>USER_SONG_METADATA_DIR</strong> = <code>"user://Music/"</code> <a href="#class-song-constant-user-song-metadata-dir">🔗</a></p>
+<p>User-imported songs (Add Track on device) save .tres here so they persist on Quest/Android.</p>
+<hr />
+<h2 id="property-descriptions">Property Descriptions</h2>
+<p><a id="class-song-property-song-title"></a></p>
+<p><code>StringName</code> <strong>Song_Title</strong> <a href="#class-song-property-song-title">🔗</a></p>
+<p>Song title shown in UI.</p>
+<hr />
+<p><a id="class-song-property-main-artist"></a></p>
+<p><a href="../Artist%20Class/#class-artist">Artist</a> <strong>Main_Artist</strong> <a href="#class-song-property-main-artist">🔗</a></p>
+<p>Primary artist for this song.</p>
+<hr />
+<p><a id="class-song-property-guest-artists"></a></p>
+<p>Array[<a href="../Artist%20Class/#class-artist">Artist</a>] <strong>Guest_Artists</strong> <a href="#class-song-property-guest-artists">🔗</a></p>
+<p>Optional list of featured artists.</p>
+<hr />
+<p><a id="class-song-property-song-album"></a></p>
+<p><a href="../Album_Class/#class-album">Album</a> <strong>Song_Album</strong> <a href="#class-song-property-song-album">🔗</a></p>
+<p>Album resource for this song. Singles can still use a same-name album resource.</p>
+<hr />
+<p><a id="class-song-property-song-genres"></a></p>
+<p>EGenre.E_ID3Genres[] <strong>Song_Genres</strong> <a href="#class-song-property-song-genres">🔗</a></p>
+<p>Genre IDs describing this song. Done in Ints, use Int_to_Id3Genre_str() to get the Genre Display</p>
+<hr />
+<p><a id="class-song-property-audio-file"></a></p>
+<p><code>AudioStream</code> <strong>Audio_File</strong> <a href="#class-song-property-audio-file">🔗</a></p>
+<p>Playable audio stream asset for this song.</p>
+<hr />
+<p><a id="class-song-property-audio-file-path"></a></p>
+<p><code>String</code> <strong>Audio_File_Path</strong> <a href="#class-song-property-audio-file-path">🔗</a></p>
+<p>For user-imported songs (Add Local): path to the file under user:// so it persists. When set, get_audio_stream() loads from this path if Audio_File is null.</p>
+<hr />
+<p><a id="class-song-property-audio-file-waveform"></a></p>
+<p><code>Texture2D</code> <strong>Audio_File_Waveform</strong> <a href="#class-song-property-audio-file-waveform">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-property-track-bpm"></a></p>
+<p><code>float</code> <strong>Track_BPM</strong> <a href="#class-song-property-track-bpm">🔗</a></p>
+<p>Base BPM value used by tempo/beat logic.</p>
+<hr />
+<p><a id="class-song-property-track-key-note"></a></p>
+<p><a href="../Properties/Music%20Key%20Class/#enum-emusickey-m-notes-enum">m_notes_enum</a> <strong>Track_Key_Note</strong> <a href="#class-song-property-track-key-note">🔗</a></p>
+<p>Root note of the track key.</p>
+<hr />
+<p><a id="class-song-property-track-scale"></a></p>
+<p><a href="../Properties/Music%20Key%20Class/#enum-emusickey-m-scales-enum">m_scales_enum</a> <strong>Track_Scale</strong> <a href="#class-song-property-track-scale">🔗</a></p>
+<p>Scale for the track key.</p>
+<hr />
+<p><a id="class-song-property-track-key"></a></p>
+<p><a href="../Properties/Music%20Key%20Class/#class-emusickey">EMusicKey</a> <strong>Track_Key</strong> = <code>&lt;unknown&gt;</code> <a href="#class-song-property-track-key">🔗</a></p>
+<p>Derived key object built from note + scale values.</p>
+<hr />
+<p><a id="class-song-property-song-origin-platform"></a></p>
+<p><a href="../Properties/Track%20Origins/#enum-etrackorigins-track-origins-enum">Track_Origins_enum</a> <strong>Song_Origin_Platform</strong> <a href="#class-song-property-song-origin-platform">🔗</a></p>
+<p>Source platform for this track.</p>
+<hr />
+<p><a id="class-song-property-favourite"></a></p>
+<p><code>bool</code> <strong>Favourite</strong> <a href="#class-song-property-favourite">🔗</a></p>
+<p>Favourite marker used by library views.</p>
+<hr />
+<p><a id="class-song-property-user-sidenote"></a></p>
+<p><code>String</code> <strong>User_Sidenote</strong> <a href="#class-song-property-user-sidenote">🔗</a></p>
+<p>Optional user note attached to this song.</p>
+<hr />
+<p><a id="class-song-property-musicbrainz-id"></a></p>
+<p><code>StringName</code> <strong>MusicBrainz_ID</strong> <a href="#class-song-property-musicbrainz-id">🔗</a></p>
+<p>Optional MusicBrainz identifier for metadata linkage.</p>
+<hr />
+<p><a id="class-song-property-attempt-find-waveform-texture"></a></p>
+<p><code>Variant</code> <strong>attempt_find_waveform_texture</strong> = <code>Attempt_Find_waveform</code> <a href="#class-song-property-attempt-find-waveform-texture">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-property-attempt-populate"></a></p>
+<p><code>Variant</code> <strong>attempt_populate</strong> = <code>Attempt_Automatic_Data_Fill_From_Audio_File</code> <a href="#class-song-property-attempt-populate">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="method-descriptions">Method Descriptions</h2>
+<p><a id="class-song-method-id3-to-displaytitle"></a></p>
+<p><code>String</code> <strong>Id3_to_DisplayTitle</strong>(Genre_ID: <code>int</code>)  <a href="#class-song-method-id3-to-displaytitle">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-method-refresh-music-key"></a></p>
+<p><strong>Refresh_Music_Key</strong>() <a href="#class-song-method-refresh-music-key">🔗</a></p>
+<p>Rebuilds Track_Key from current note/scale fields.</p>
+<hr />
+<p><a id="class-song-method-get-audio-stream"></a></p>
+<p><code>AudioStream</code> <strong>get_audio_stream</strong>() <a href="#class-song-method-get-audio-stream">🔗</a></p>
+<p>Returns the playable stream: Audio_File if set, otherwise loads from Audio_File_Path (user imports).</p>
+<hr />
+<p><a id="class-song-method-attempt-find-waveform"></a></p>
+<p><code>bool</code> <strong>Attempt_Find_waveform</strong>() <a href="#class-song-method-attempt-find-waveform">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-method-attempt-find-waveform-from-audio-file-path"></a></p>
+<p><code>bool</code> <strong>Attempt_Find_waveform_from_audio_file_path</strong>() <a href="#class-song-method-attempt-find-waveform-from-audio-file-path">🔗</a></p>
+<p>Attempts to load the generated *_WAVEFORM.png from next to Audio_File_Path. This is useful for user-imported songs where Audio_File is null.</p>
+<hr />
+<p><a id="class-song-private-method-sanitize-waveform-base-name"></a></p>
+<p><code>String</code> <strong>_sanitize_waveform_base_name</strong>(raw_base_name: <code>String</code>) <a href="#class-song-private-method-sanitize-waveform-base-name">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-private-method-android-external-files-fallback"></a></p>
+<p><code>String</code> <strong>_android_external_files_fallback</strong>(internal_global_path: <code>String</code>) <a href="#class-song-private-method-android-external-files-fallback">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-private-method-android-alt-internal-files-fallback"></a></p>
+<p><code>String</code> <strong>_android_alt_internal_files_fallback</strong>(internal_global_path: <code>String</code>) <a href="#class-song-private-method-android-alt-internal-files-fallback">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-private-method-ready"></a></p>
+<p><strong>_ready</strong>() <a href="#class-song-private-method-ready">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-method-attempt-automatic-data-fill-from-audio-file"></a></p>
+<p><strong>Attempt_Automatic_Data_Fill_From_Audio_File</strong>() <a href="#class-song-method-attempt-automatic-data-fill-from-audio-file">🔗</a></p>
+<p><strong>Deprecated:</strong> This method may be changed or removed in future versions.</p>
+<hr />
+<p><a id="class-song-private-method-to-string"></a></p>
+<p><code>String</code> <strong>_to_string</strong>() <a href="#class-song-private-method-to-string">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-song-method-get-all-song-paths"></a></p>
+<p><code>PackedStringArray</code> <strong>Get_All_Song_Paths</strong>()  <a href="#class-song-method-get-all-song-paths">🔗</a></p>
+<p>Returns metadata .tres paths from both res:// and user:// stores.</p>
+<hr />
+<p><a id="class-song-method-try-delete-song-at-metadata-path"></a></p>
+<p><code>Dictionary</code> <strong>try_delete_song_at_metadata_path</strong>(metadata_resource_path: <code>String</code>)  <a href="#class-song-method-try-delete-song-at-metadata-path">🔗</a></p>
+<p>Deletes a user-imported song: the .tres metadata file, optional Audio_File_Path under user://, and a waveform PNG next to the audio if present. Built-in res:// library tracks are not removable at runtime.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

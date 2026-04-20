@@ -22,22 +22,31 @@ hide:
 </p>
 
 <script>
-(function () {
-  const v = document.querySelector('.rave-spin-bg-video');
-  if (!v) return;
-  v.muted = true;
-  const THRESHOLD = 10;
-  let started = false;
-  const tryPlay = () => {
-    if (started) return;
-    const buffered = v.buffered.length ? v.buffered.end(v.buffered.length - 1) : 0;
-    if (buffered >= THRESHOLD || (v.duration && buffered >= v.duration)) {
-      started = true;
-      v.play().catch(() => {});
-    }
-  };
-  v.addEventListener('progress', tryPlay);
-  v.addEventListener('canplaythrough', () => { started = true; v.play().catch(() => {}); });
-  v.load();
+(
+  function () 
+  {
+    const v = document.querySelector('.rave-spin-bg-video');
+    if (!v) 
+      return;
+    
+    v.muted = true;
+    const THRESHOLD = 10;
+    let started = false;
+    const tryPlay = () => 
+    {
+      if (started) 
+        return;
+      
+      const buffered = v.buffered.length ? v.buffered.end(v.buffered.length - 1) : 0;
+    
+      if (buffered >= THRESHOLD || (v.duration && buffered >= v.duration)) 
+      {
+        started = true;
+        v.play().catch(() => {});
+      }
+    };
+    v.addEventListener('progress', tryPlay);
+    v.addEventListener('canplaythrough', () => { started = true; v.play().catch(() => {}); });
+    v.load();
 })();
 </script>

@@ -1,0 +1,3839 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://marc-rene.github.io/RaveSpin-Documentation/Codebase/DJ%20Controller/DJ_Controller/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../Controls/Base_Control_Class/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>DJ Controller - RaveSpin XR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dj_controller" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="RaveSpin XR" class="md-header__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaveSpin XR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DJ Controller
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RaveSpin XR" class="md-nav__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    RaveSpin XR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Addons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Addons/Waveform%20Generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveform Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Album_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Album Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Artist%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artist Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Audio%20Metadata%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Metadata Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Bus%20Manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Song%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Properties
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Properties
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Properties/Genre%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genre Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Properties/Music%20Key%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Key Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Audio/Properties/Track%20Origins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DJ Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Controls/Base_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Controls/Knob_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Controls/Performance_Pad_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Pad Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Controls/Slider_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slider Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Global
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Player_Finger_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Finger Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Scripts_Arena_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts Arena Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Startxr_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startxr Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Librebox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Ui_Librebox_Components_Recording_Gd_Recording_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Active_Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Bpm_Spinner_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bpm Spinner Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Db_Meter_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Meter Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Librebox_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_5" id="__nav_3_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Add_Track_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Track Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Librebox_Trackselection_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Trackselection Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Trackdeleteconfirmui_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trackdeleteconfirmui Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- DO NOT EDIT THIS FILE!!! -->
+<!-- Generated automatically from Godot engine sources. -->
+<!-- Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. -->
+<!-- XML source: https://github.com/godotengine/godot/tree/master/../RaveSpin/Documentation/gen_docs/DJ_Controller.xml. -->
+
+<p><a id="class-dj-controller"></a></p>
+<h1 id="dj_controller">DJ_Controller</h1>
+<p><strong>Inherits:</strong> <code>Node3D</code></p>
+<p>Central FLX4-style runtime controller. Owns deck state, transport, loop/cue/pad modes, and per-frame mixer/audio updates.</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th><code>float</code></th>
+<th><a href="#class-dj-controller-property-track-1-playback-pos">Track_1_playback_pos</a></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-track-2-playback-pos">Track_2_playback_pos</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-track-1-playback-length">Track_1_playback_length</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-track-2-playback-length">Track_2_playback_length</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#enum-dj-controller-e-bpm-lock-status">E_BPM_Lock_Status</a></td>
+<td><a href="#class-dj-controller-property-beatsyncstate">BeatSyncState</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><a href="#class-dj-controller">DJ_Controller</a></td>
+<td><a href="#class-dj-controller-property-controller-instance">Controller_Instance</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-use-2-track-bus-layout">Use_2_Track_Bus_Layout</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>AudioBusLayout</code></td>
+<td><a href="#class-dj-controller-property-bus-layout">Bus_Layout</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Array[<code>AudioStreamPlayer</code>]</td>
+<td><a href="#class-dj-controller-property-audioplayerlist">AudioPlayerList</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-channel-1-left-bus-index">Channel_1_Left_Bus_Index</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-channel-2-right-bus-index">Channel_2_Right_Bus_Index</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-channel-3-leftalt-bus-index">Channel_3_LeftALT_Bus_Index</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-channel-4-rightalt-bus-index">Channel_4_RightALT_Bus_Index</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Node3D</code></td>
+<td><a href="#class-dj-controller-property-left-jogwheel-node">Left_Jogwheel_Node</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Node3D</code></td>
+<td><a href="#class-dj-controller-property-right-jogwheel-node">Right_Jogwheel_Node</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Area3D</code></td>
+<td><a href="#class-dj-controller-property-left-jogwheel-activation">Left_Jogwheel_Activation</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Area3D</code></td>
+<td><a href="#class-dj-controller-property-right-jogwheel-activation">Right_Jogwheel_Activation</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>CollisionShape3D</code></td>
+<td><a href="#class-dj-controller-property-left-jogwheel-collision-shape">Left_Jogwheel_Collision_Shape</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>CollisionShape3D</code></td>
+<td><a href="#class-dj-controller-property-right-jogwheel-collision-shape">Right_Jogwheel_Collision_Shape</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-trim-l">Core_FX_Knobs_TRIM_L</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-eq-low-l">Core_FX_Knobs_EQ_LOW_L</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-eq-mid-l">Core_FX_Knobs_EQ_MID_L</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-eq-high-l">Core_FX_Knobs_EQ_HIGH_L</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-sound-color-fx-l">Core_FX_Knobs_SOUND_COLOR_FX_L</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-trim-r">Core_FX_Knobs_TRIM_R</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-eq-low-r">Core_FX_Knobs_EQ_LOW_R</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-eq-mid-r">Core_FX_Knobs_EQ_MID_R</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-eq-high-r">Core_FX_Knobs_EQ_HIGH_R</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-core-fx-knobs-sound-color-fx-r">Core_FX_Knobs_SOUND_COLOR_FX_R</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-dj-controller-property-beat-fx-knob">Beat_FX_Knob</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Curve</code></td>
+<td><a href="#class-dj-controller-property-crossfader-curve-left">Crossfader_Curve_Left</a></td>
+<td><code>&lt;Object&gt;</code></td>
+</tr>
+<tr>
+<td><code>Curve</code></td>
+<td><a href="#class-dj-controller-property-crossfader-curve-right">Crossfader_Curve_Right</a></td>
+<td><code>&lt;Object&gt;</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-channel-faders">Channel_Faders</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-crossfade-alpha">Crossfade_Alpha</a></td>
+<td><code>0.5</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-bpm-adjust-range">BPM_Adjust_Range</a></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-property-restrict-jogwheel-to-matching-hand">Restrict_Jogwheel_To_Matching_Hand</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-jogwheel-audio-warp-seconds-per-full-rotation">Jogwheel_Audio_Warp_Seconds_Per_Full_Rotation</a></td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-jogwheel-auto-spin-rotations-per-second-at-normal-speed">Jogwheel_Auto_Spin_Rotations_Per_Second_At_Normal_Speed</a></td>
+<td><code>1.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-jogwheel-grab-radius-meters">Jogwheel_Grab_Radius_Meters</a></td>
+<td><code>0.06</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-property-use-multi-threaded-jog-warp">Use_Multi_Threaded_Jog_Warp</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-property-use-snap-style-jogwheel-grab">Use_Snap_Style_Jogwheel_Grab</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-property-jogwheel-enable-audible-scratching">Jogwheel_Enable_Audible_Scratching</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>MeshInstance3D</code></td>
+<td><a href="#class-dj-controller-property-left-jogwheel-mesh">Left_Jogwheel_Mesh</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>MeshInstance3D</code></td>
+<td><a href="#class-dj-controller-property-right-jogwheel-mesh">Right_Jogwheel_Mesh</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-dj-controller-property-left-jogwheel-finger">Left_Jogwheel_Finger</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-dj-controller-property-right-jogwheel-finger">Right_Jogwheel_Finger</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-dj-controller-property-jog-last-angle-radians">_jog_last_angle_radians</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-jog-has-last-angle">_jog_has_last_angle</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>Thread</code>]</td>
+<td><a href="#class-dj-controller-property-jog-seek-threads">_jog_seek_threads</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-jog-seek-thread-run">_jog_seek_thread_run</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-dj-controller-property-jog-pending-seek-seconds">_jog_pending_seek_seconds</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-jog-touch-active">_jog_touch_active</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-jog-resume-after-touch">_jog_resume_after_touch</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-dj-controller-property-jog-virtual-position-seconds">_jog_virtual_position_seconds</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-jog-has-virtual-position">_jog_has_virtual_position</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>]</td>
+<td><a href="#class-dj-controller-property-all-player-fingers">_all_player_fingers</a></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-loop-point-snapping-enabled">Loop_Point_Snapping_Enabled</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-loop-enabled">Loop_Enabled</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-dj-controller-property-loop-start-sec">Loop_Start_Sec</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-dj-controller-property-loop-end-sec">Loop_End_Sec</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-loop-start-armed">Loop_Start_Armed</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-loop-end-armed">Loop_End_Armed</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>Thread</code>]</td>
+<td><a href="#class-dj-controller-property-loop-threads">_loop_threads</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-loop-thread-run">_loop_thread_run</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>int</code>]</td>
+<td><a href="#class-dj-controller-property-loop-last-seek-ms">_loop_last_seek_ms</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>int</code>]</td>
+<td><a href="#class-dj-controller-property-performance-pad-mode-by-track">Performance_Pad_Mode_By_Track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-hot-cue-add-mode-by-track">Hot_Cue_Add_Mode_By_Track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>int</code>]</td>
+<td><a href="#class-dj-controller-property-selected-fx-set-by-track">Selected_FX_Set_By_Track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>int</code>]</td>
+<td><a href="#class-dj-controller-property-key-shift-semitones-by-track">Key_Shift_Semitones_By_Track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td><a href="#class-dj-controller-property-hot-cue-sec-by-track">Hot_Cue_Sec_By_Track</a></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-dj-controller-property-regular-cue-sec-by-track">Regular_Cue_Sec_By_Track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-regular-cue-is-set-by-track">_regular_cue_is_set_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-regular-cue-hold-active-by-track">_regular_cue_hold_active_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td>Array[<code>bool</code>]</td>
+<td><a href="#class-dj-controller-property-regular-cue-hold-was-playing-by-track">_regular_cue_hold_was_playing_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td><a href="#class-dj-controller-property-performance-pad-controls-by-track">_performance_pad_controls_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td><a href="#class-dj-controller-property-performance-pad-sampler-players-by-track">_performance_pad_sampler_players_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td><a href="#class-dj-controller-property-performance-pad-pulse-materials-by-track">_performance_pad_pulse_materials_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td><a href="#class-dj-controller-property-performance-pad-fx-hold-active-by-track">_performance_pad_fx_hold_active_by_track</a></td>
+<td><code>[...]</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-performance-pad-pulse-time">_performance_pad_pulse_time</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-track-1-new-bpm">track_1_new_bpm</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-track-2-new-bpm">track_2_new_bpm</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-dj-controller-property-i">i</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-dj-controller-property-debug-visable">debug_visable</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-ref-bpm">ref_bpm</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-move-bpm">move_bpm</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-stream-length">stream_length</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-ref-beat-stream">ref_beat_stream</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-move-beat-stream">move_beat_stream</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-latency-correction">latency_correction</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-ref-pos">ref_pos</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-move-pos">move_pos</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-phase-ratio">phase_ratio</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-dj-controller-property-move-beat-index">move_beat_index</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-property-new-pos">new_pos</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th><a href="#class-dj-controller">DJ_Controller</a></th>
+<th><a href="#class-dj-controller-method-get-instance-await">Get_Instance_await</a>()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#class-dj-controller">DJ_Controller</a></td>
+<td><a href="#class-dj-controller-method-get-instance">Get_Instance</a>()</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-track-playback-position">Get_Track_Playback_Position</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-track-playback-alpha">Get_Track_Playback_Alpha</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>AudioStreamPlayer</code></td>
+<td><a href="#class-dj-controller-method-get-track-playback-player">Get_Track_Playback_Player</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-dj-controller-method-get-performance-pad-mode">Get_Performance_Pad_Mode</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-set-performance-pad-mode">Set_Performance_Pad_Mode</a>(which_track: <code>int</code>, mode: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-get-hot-cue-add-mode">Get_Hot_Cue_Add_Mode</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-set-hot-cue-add-mode">Set_Hot_Cue_Add_Mode</a>(which_track: <code>int</code>, add_mode_enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-dj-controller-method-get-selected-fx-set">Get_Selected_FX_Set</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-has-regular-cue">Has_Regular_Cue</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-regular-cue-sec">Get_Regular_Cue_Sec</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-has-hot-cue">Has_Hot_Cue</a>(which_track: <code>int</code>, cue_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-hot-cue-sec">Get_Hot_Cue_Sec</a>(which_track: <code>int</code>, cue_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-clear-all-hot-cues">Clear_All_Hot_Cues</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>Color</code></td>
+<td><a href="#class-dj-controller-method-get-performance-pad-color">Get_Performance_Pad_Color</a>(pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-is-loop-enabled">Is_Loop_Enabled</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-loop-start-sec">Get_Loop_Start_Sec</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-loop-end-sec">Get_Loop_End_Sec</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-is-loop-start-armed">Is_Loop_Start_Armed</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-is-loop-end-armed">Is_Loop_End_Armed</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-method-is-loop-point-snapping-enabled">Is_Loop_Point_Snapping_Enabled</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-set-loop-point-snapping-enabled">Set_Loop_Point_Snapping_Enabled</a>(which_track: <code>int</code>, enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-clear-loop">Clear_Loop</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-setup-performance-pad-defaults">_setup_performance_pad_defaults</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-setup-performance-pad-nodes-and-signals">_setup_performance_pad_nodes_and_signals</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-cache-and-connect-performance-pads-for-track">_cache_and_connect_performance_pads_for_track</a>(which_track: <code>int</code>, pad_group: <code>Node</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-performance-pad-on-activated">_on_performance_pad_on_activated</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-performance-pad-handle-hot-cue">_performance_pad_handle_hot_cue</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-performance-pad-handle-sampler">_performance_pad_handle_sampler</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-performance-pad-handle-fx-hold">_performance_pad_handle_fx_hold</a>(which_track: <code>int</code>, pad_index: <code>int</code>, is_pressed: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-clear-held-fx-for-track">_clear_held_fx_for_track</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-performance-pad-handle-beat-jump">_performance_pad_handle_beat_jump</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-performance-pad-handle-key-shift">_performance_pad_handle_key_shift</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-update-performance-pad-feedback">_update_performance_pad_feedback</a>(delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-update-performance-pad-label">_update_performance_pad_label</a>(which_track: <code>int</code>, pad_index: <code>int</code>, pad_control: <a href="../Controls/Base_Control_Class/#class-base-control">Base_Control</a>)</td>
+</tr>
+<tr>
+<td><code>Dictionary</code></td>
+<td><a href="#class-dj-controller-private-method-get-fx-context-for-pad">_get_fx_context_for_pad</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-performance-pad-pressed">_on_performance_pad_pressed</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-performance-pad-released">_on_performance_pad_released</a>(which_track: <code>int</code>, pad_index: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-private-method-beat-len-stream-sec">_beat_len_stream_sec</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-private-method-stream-len-sec">_stream_len_sec</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-private-method-get-loop-quantized-point-sec">_get_loop_quantized_point_sec</a>(which_track: <code>int</code>, use_beat_start: <code>bool</code>, use_beat_end: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-set-loop-points-sec">_set_loop_points_sec</a>(which_track: <code>int</code>, start_sec: <code>float</code>, end_sec: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-loop-seek-on-main">_loop_seek_on_main</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-loop-thread-main">_loop_thread_main</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-loop-set-start-point">Loop_Set_Start_Point</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-loop-set-end-point">Loop_Set_End_Point</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-loop-make-4-beat-toggle">Loop_Make_4_Beat_Toggle</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-loop-shorten">Loop_Shorten</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-loop-extend">Loop_Extend</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-loadtrackintomemory">LoadTrackIntoMemory</a>(which_track: <code>int</code>, which_song: <a href="../../Audio/Song%20Class/#class-song">Song</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-play-pause">Play_Pause</a>(p_which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-ready">_ready</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-configure-knob-popup-labels">_configure_knob_popup_labels</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-exit-tree">_exit_tree</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-start-loop-threads">_start_loop_threads</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-start-jog-seek-threads">_start_jog_seek_threads</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-stop-jog-seek-threads">_stop_jog_seek_threads</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-jog-seek-thread-main">_jog_seek_thread_main</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-setup-jogwheel-targets">_setup_jogwheel_targets</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-collect-player-fingers">_collect_player_fingers</a>(root_node: <code>Node</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-private-method-is-pose-allowed-for-jogwheel">_is_pose_allowed_for_jogwheel</a>(which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-dj-controller-private-method-is-finger-allowed-for-track">_is_finger_allowed_for_track</a>(which_track: <code>int</code>, which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>)</td>
+</tr>
+<tr>
+<td><code>MeshInstance3D</code></td>
+<td><a href="#class-dj-controller-private-method-get-jogwheel-mesh-for-track">_get_jogwheel_mesh_for_track</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-dj-controller-private-method-get-jogwheel-finger-for-track">_get_jogwheel_finger_for_track</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-set-jogwheel-finger-for-track">_set_jogwheel_finger_for_track</a>(which_track: <code>int</code>, which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-clear-jog-angle-tracking">_clear_jog_angle_tracking</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>Node3D</code></td>
+<td><a href="#class-dj-controller-private-method-get-jogwheel-anchor-for-track">_get_jogwheel_anchor_for_track</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-private-method-get-jogwheel-touch-angle-radians">_get_jogwheel_touch_angle_radians</a>(which_track: <code>int</code>, which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-apply-track-seek">_apply_track_seek</a>(which_track: <code>int</code>, seek_seconds: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-warp-track-from-jogwheel">_warp_track_from_jogwheel</a>(which_track: <code>int</code>, rotation_radians: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-rotate-jogwheel-mesh-visual">_rotate_jogwheel_mesh_visual</a>(which_track: <code>int</code>, rotation_radians: <code>float</code>)</td>
+</tr>
+<tr>
+<td><code>Area3D</code></td>
+<td><a href="#class-dj-controller-private-method-get-jogwheel-activation-for-track">_get_jogwheel_activation_for_track</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-release-jogwheel-finger-if-out-of-snap-range">_release_jogwheel_finger_if_out_of_snap_range</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-try-acquire-jogwheel-finger-from-overlap">_try_acquire_jogwheel_finger_from_overlap</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-resume-track-after-jog-touch">_resume_track_after_jog_touch</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-update-jogwheel-track">_update_jogwheel_track</a>(which_track: <code>int</code>, delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-jog-activation-area-entered">_on_left_jog_activation_area_entered</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-jog-activation-area-exited">_on_left_jog_activation_area_exited</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-jog-activation-area-entered">_on_right_jog_activation_area_entered</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-jog-activation-area-exited">_on_right_jog_activation_area_exited</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-stop-loop-threads">_stop_loop_threads</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-play-on-activated">_on_left_play_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-play-on-activated">_on_right_play_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-cue-on-pressed">_on_left_cue_on_pressed</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-cue-on-pressed">_on_right_cue_on_pressed</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-cue-on-released">_on_left_cue_on_released</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-cue-on-released">_on_right_cue_on_released</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-cue-pressed">_on_cue_pressed</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-cue-released">_on_cue_released</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-update-channel-dbs">Update_Channel_DBs</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-update-channel-trim-eq-cfx">Update_Channel_Trim_EQ_CFX</a>()</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-track-current-bpm">Get_Track_Current_BPM</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-dj-controller-method-get-track-speed-mult">Get_Track_Speed_Mult</a>(which_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-method-update-channel-tempo-adjusts">Update_Channel_Tempo_Adjusts</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-process">_process</a>(delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-physics-process">_physics_process</a>(delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-reset-area-area-entered">_on_reset_area_area_entered</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-set-collision-shapes-visible-recursive">_set_collision_shapes_visible_recursive</a>(node: <code>Node</code>, visible: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-disable-debig-shapes-area-entered">_on_disable_debig_shapes_area_entered</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-beat-sync-on-activated">_on_left_beat_sync_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-beat-sync-on-activated">_on_right_beat_sync_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-loop-start-on-activated">_on_left_loop_start_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-loop-end-on-activated">_on_left_loop_end_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-make-4-beat-loop-on-activated">_on_left_make_4_beat_loop_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-shorten-loop-on-activated">_on_left_shorten_loop_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-left-extend-loop-on-activated">_on_left_extend_loop_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-loop-start-on-activated">_on_right_loop_start_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-loop-end-on-activated">_on_right_loop_end_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-make-4-beat-loop-on-activated">_on_right_make_4_beat_loop_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-shorten-loop-on-activated">_on_right_shorten_loop_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-right-extend-loop-on-activated">_on_right_extend_loop_on_activated</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-seek-track-phase-to-match">_seek_track_phase_to_match</a>(track_to_move: <code>int</code>, reference_track: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-dj-controller-private-method-on-select-fx-activated">_on_Select_FX_activated</a>()</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="signals">Signals</h2>
+<p><a id="class-dj-controller-signal-all-ready"></a></p>
+<p><strong>all_ready</strong>() <a href="#class-dj-controller-signal-all-ready">🔗</a></p>
+<p>There is currently no description for this signal. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-signal-sync-lefttrackbpm-to-righttrackbpm"></a></p>
+<p><strong>Sync_LeftTrackBPM_to_RightTrackBPM</strong>() <a href="#class-dj-controller-signal-sync-lefttrackbpm-to-righttrackbpm">🔗</a></p>
+<p>There is currently no description for this signal. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-signal-sync-righttrackbpm-to-lefttrackbpm"></a></p>
+<p><strong>Sync_RightTrackBPM_to_LeftTrackBPM</strong>() <a href="#class-dj-controller-signal-sync-righttrackbpm-to-lefttrackbpm">🔗</a></p>
+<p>There is currently no description for this signal. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="enumerations">Enumerations</h2>
+<p><a id="enum-dj-controller-e-bpm-lock-status"></a></p>
+<p>enum <strong>E_BPM_Lock_Status</strong>: <a href="#enum-dj-controller-e-bpm-lock-status">🔗</a></p>
+<p><a id="class-dj-controller-constant-both-free"></a></p>
+<p><a href="#enum-dj-controller-e-bpm-lock-status">E_BPM_Lock_Status</a> <strong>BOTH_FREE</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-left-track-synced-to-right"></a></p>
+<p><a href="#enum-dj-controller-e-bpm-lock-status">E_BPM_Lock_Status</a> <strong>LEFT_TRACK_SYNCED_TO_RIGHT</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-right-track-synced-to-left"></a></p>
+<p><a href="#enum-dj-controller-e-bpm-lock-status">E_BPM_Lock_Status</a> <strong>RIGHT_TRACK_SYNCED_TO_LEFT</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-dj-controller-bus-manager-e-beat-fx-type"></a></p>
+<p>enum <strong>BUS_MANAGER.E_BEAT_FX_TYPE[]</strong>: <a href="#enum-dj-controller-bus-manager-e-beat-fx-type">🔗</a></p>
+<p><a id="class-dj-controller-constant-fx-set-1-types"></a></p>
+<p>BUS_MANAGER.E_BEAT_FX_TYPE[] <strong>FX_SET_1_TYPES</strong> = <code>Array[int]([0, 1, 2, 3, 4, 5, 6, 7])</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-fx-set-2-types"></a></p>
+<p>BUS_MANAGER.E_BEAT_FX_TYPE[] <strong>FX_SET_2_TYPES</strong> = <code>Array[int]([8, 9, 10, 11, 12, 13, 0, 2])</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-dj-controller-e-performance-pad-mode"></a></p>
+<p>enum <strong>E_Performance_Pad_Mode</strong>: <a href="#enum-dj-controller-e-performance-pad-mode">🔗</a></p>
+<p><a id="class-dj-controller-constant-hot-cue"></a></p>
+<p><a href="#enum-dj-controller-e-performance-pad-mode">E_Performance_Pad_Mode</a> <strong>HOT_CUE</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-sampler"></a></p>
+<p><a href="#enum-dj-controller-e-performance-pad-mode">E_Performance_Pad_Mode</a> <strong>SAMPLER</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-fx-set-1"></a></p>
+<p><a href="#enum-dj-controller-e-performance-pad-mode">E_Performance_Pad_Mode</a> <strong>FX_SET_1</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-fx-set-2"></a></p>
+<p><a href="#enum-dj-controller-e-performance-pad-mode">E_Performance_Pad_Mode</a> <strong>FX_SET_2</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-beat-jump"></a></p>
+<p><a href="#enum-dj-controller-e-performance-pad-mode">E_Performance_Pad_Mode</a> <strong>BEAT_JUMP</strong> = <code>4</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-key-shift"></a></p>
+<p><a href="#enum-dj-controller-e-performance-pad-mode">E_Performance_Pad_Mode</a> <strong>KEY_SHIFT</strong> = <code>5</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="constants">Constants</h2>
+<p><a id="class-dj-controller-constant-use-multi-threaded-looping"></a></p>
+<p><strong>Use_Multi_threaded_looping</strong> = <code>true</code> <a href="#class-dj-controller-constant-use-multi-threaded-looping">🔗</a></p>
+<p>Loop handling must stay threaded for stable runtime behaviour on target XR hardware. Disabling this has previously caused startup/runtime failures on device.</p>
+<p><a id="class-dj-controller-constant-loop-seek-cooldown-ms"></a></p>
+<p><strong>LOOP_SEEK_COOLDOWN_MS</strong> = <code>40</code> <a href="#class-dj-controller-constant-loop-seek-cooldown-ms">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-loop-min-beats"></a></p>
+<p><strong>LOOP_MIN_BEATS</strong> = <code>0.0625</code> <a href="#class-dj-controller-constant-loop-min-beats">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-loop-max-beats"></a></p>
+<p><strong>LOOP_MAX_BEATS</strong> = <code>128.0</code> <a href="#class-dj-controller-constant-loop-max-beats">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-performance-pad-count"></a></p>
+<p><strong>PERFORMANCE_PAD_COUNT</strong> = <code>8</code> <a href="#class-dj-controller-constant-performance-pad-count">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-hot-cue-unset-sec"></a></p>
+<p><strong>HOT_CUE_UNSET_SEC</strong> = <code>-1.0</code> <a href="#class-dj-controller-constant-hot-cue-unset-sec">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-dj-controller-constant-beat-jump-steps-beats"></a></p>
+<p><strong>BEAT_JUMP_STEPS_BEATS</strong> = <code>Array[float]([-1.0, 1.0, -2.0, 2.0, -4.0, 4.0, -8.0, 8.0])</code> <a href="#class-dj-controller-constant-beat-jump-steps-beats">🔗</a></p>
+<p>FLX4 default Beat Jump mapping: pad 1/2 = -/+1 beat, 3/4 = -/+2 beats, 5/6 = -/+4 beats, 7/8 = -/+8 beats.</p>
+<p><a id="class-dj-controller-constant-key-shift-steps-semitones"></a></p>
+<p><strong>KEY_SHIFT_STEPS_SEMITONES</strong> = <code>Array[int]([4, 5, 6, 7, 0, 1, 2, 3])</code> <a href="#class-dj-controller-constant-key-shift-steps-semitones">🔗</a></p>
+<p>FLX4 default Key Shift mapping: pads 1..8 = +4, +5, +6, +7, 0, +1, +2, +3 semitones.</p>
+<p><a id="class-dj-controller-constant-performance-pad-colours"></a></p>
+<p><strong>PERFORMANCE_PAD_COLOURS</strong> = <code>Array[Color]([Color(0.99, 0.46, 0.24, 1), Color(0.99, 0.73, 0.21, 1), Color(0.98, 0.93, 0.31, 1), Color(0.53, 0.91, 0.35, 1), Color(0.3, 0.86, 0.78, 1), Color(0.35, 0.64, 0.98, 1), Color(0.66, 0.47, 0.96, 1), Color(0.94, 0.37, 0.72, 1)])</code> <a href="#class-dj-controller-constant-performance-pad-colours">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="property-descriptions">Property Descriptions</h2>
+<p><a id="class-dj-controller-property-track-1-playback-pos"></a></p>
+<p><code>float</code> <strong>Track_1_playback_pos</strong> <a href="#class-dj-controller-property-track-1-playback-pos">🔗</a></p>
+<p>Cached playback position/length values to avoid repeated per-frame lookups elsewhere.</p>
+<hr />
+<p><a id="class-dj-controller-property-track-2-playback-pos"></a></p>
+<p><code>float</code> <strong>Track_2_playback_pos</strong> <a href="#class-dj-controller-property-track-2-playback-pos">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-track-1-playback-length"></a></p>
+<p><code>float</code> <strong>Track_1_playback_length</strong> <a href="#class-dj-controller-property-track-1-playback-length">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-track-2-playback-length"></a></p>
+<p><code>float</code> <strong>Track_2_playback_length</strong> <a href="#class-dj-controller-property-track-2-playback-length">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-beatsyncstate"></a></p>
+<p><a href="#enum-dj-controller-e-bpm-lock-status">E_BPM_Lock_Status</a> <strong>BeatSyncState</strong> = <code>0</code> <a href="#class-dj-controller-property-beatsyncstate">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-controller-instance"></a></p>
+<p><a href="#class-dj-controller">DJ_Controller</a> <strong>Controller_Instance</strong> = <code>null</code> <a href="#class-dj-controller-property-controller-instance">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-use-2-track-bus-layout"></a></p>
+<p><code>Variant</code> <strong>Use_2_Track_Bus_Layout</strong> = <code>true</code> <a href="#class-dj-controller-property-use-2-track-bus-layout">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-bus-layout"></a></p>
+<p><code>AudioBusLayout</code> <strong>Bus_Layout</strong> <a href="#class-dj-controller-property-bus-layout">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-audioplayerlist"></a></p>
+<p>Array[<code>AudioStreamPlayer</code>] <strong>AudioPlayerList</strong> = <code>[...]</code> <a href="#class-dj-controller-property-audioplayerlist">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-channel-1-left-bus-index"></a></p>
+<p><code>Variant</code> <strong>Channel_1_Left_Bus_Index</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-channel-1-left-bus-index">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-channel-2-right-bus-index"></a></p>
+<p><code>Variant</code> <strong>Channel_2_Right_Bus_Index</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-channel-2-right-bus-index">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-channel-3-leftalt-bus-index"></a></p>
+<p><code>Variant</code> <strong>Channel_3_LeftALT_Bus_Index</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-channel-3-leftalt-bus-index">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-channel-4-rightalt-bus-index"></a></p>
+<p><code>Variant</code> <strong>Channel_4_RightALT_Bus_Index</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-channel-4-rightalt-bus-index">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-left-jogwheel-node"></a></p>
+<p><code>Node3D</code> <strong>Left_Jogwheel_Node</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-left-jogwheel-node">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-right-jogwheel-node"></a></p>
+<p><code>Node3D</code> <strong>Right_Jogwheel_Node</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-right-jogwheel-node">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-left-jogwheel-activation"></a></p>
+<p><code>Area3D</code> <strong>Left_Jogwheel_Activation</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-left-jogwheel-activation">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-right-jogwheel-activation"></a></p>
+<p><code>Area3D</code> <strong>Right_Jogwheel_Activation</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-right-jogwheel-activation">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-left-jogwheel-collision-shape"></a></p>
+<p><code>CollisionShape3D</code> <strong>Left_Jogwheel_Collision_Shape</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-left-jogwheel-collision-shape">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-right-jogwheel-collision-shape"></a></p>
+<p><code>CollisionShape3D</code> <strong>Right_Jogwheel_Collision_Shape</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-right-jogwheel-collision-shape">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-trim-l"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_TRIM_L</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-trim-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-eq-low-l"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_EQ_LOW_L</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-eq-low-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-eq-mid-l"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_EQ_MID_L</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-eq-mid-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-eq-high-l"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_EQ_HIGH_L</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-eq-high-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-sound-color-fx-l"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_SOUND_COLOR_FX_L</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-sound-color-fx-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-trim-r"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_TRIM_R</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-trim-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-eq-low-r"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_EQ_LOW_R</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-eq-low-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-eq-mid-r"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_EQ_MID_R</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-eq-mid-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-eq-high-r"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_EQ_HIGH_R</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-eq-high-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-core-fx-knobs-sound-color-fx-r"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Core_FX_Knobs_SOUND_COLOR_FX_R</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-core-fx-knobs-sound-color-fx-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-beat-fx-knob"></a></p>
+<p><a href="../Controls/Knob_Control_Class/#class-knob-control">Knob_Control</a> <strong>Beat_FX_Knob</strong> = <code>&lt;unknown&gt;</code> <a href="#class-dj-controller-property-beat-fx-knob">🔗</a></p>
+<p>Beat FX intensity control (0 = no audible effect, 1 = full effect).</p>
+<hr />
+<p><a id="class-dj-controller-property-crossfader-curve-left"></a></p>
+<p><code>Curve</code> <strong>Crossfader_Curve_Left</strong> = <code>&lt;Object&gt;</code> <a href="#class-dj-controller-property-crossfader-curve-left">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-crossfader-curve-right"></a></p>
+<p><code>Curve</code> <strong>Crossfader_Curve_Right</strong> = <code>&lt;Object&gt;</code> <a href="#class-dj-controller-property-crossfader-curve-right">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-channel-faders"></a></p>
+<p><code>Variant</code> <strong>Channel_Faders</strong> = <code>[...]</code> <a href="#class-dj-controller-property-channel-faders">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-crossfade-alpha"></a></p>
+<p><code>Variant</code> <strong>Crossfade_Alpha</strong> = <code>0.5</code> <a href="#class-dj-controller-property-crossfade-alpha">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-bpm-adjust-range"></a></p>
+<p><code>Variant</code> <strong>BPM_Adjust_Range</strong> = <code>0.1</code> <a href="#class-dj-controller-property-bpm-adjust-range">🔗</a></p>
+<p>Tempo slider range as a multiplier offset around 1.0 (default +/-10%).</p>
+<hr />
+<p><a id="class-dj-controller-property-restrict-jogwheel-to-matching-hand"></a></p>
+<p><code>bool</code> <strong>Restrict_Jogwheel_To_Matching_Hand</strong> = <code>false</code> <a href="#class-dj-controller-property-restrict-jogwheel-to-matching-hand">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jogwheel-audio-warp-seconds-per-full-rotation"></a></p>
+<p><code>float</code> <strong>Jogwheel_Audio_Warp_Seconds_Per_Full_Rotation</strong> = <code>1.0</code> <a href="#class-dj-controller-property-jogwheel-audio-warp-seconds-per-full-rotation">🔗</a></p>
+<p>Track-time warp amount for one full jogwheel rotation. Example: 1.0 means one full turn seeks by one second.</p>
+<hr />
+<p><a id="class-dj-controller-property-jogwheel-auto-spin-rotations-per-second-at-normal-speed"></a></p>
+<p><code>float</code> <strong>Jogwheel_Auto_Spin_Rotations_Per_Second_At_Normal_Speed</strong> = <code>1.0</code> <a href="#class-dj-controller-property-jogwheel-auto-spin-rotations-per-second-at-normal-speed">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jogwheel-grab-radius-meters"></a></p>
+<p><code>float</code> <strong>Jogwheel_Grab_Radius_Meters</strong> = <code>0.06</code> <a href="#class-dj-controller-property-jogwheel-grab-radius-meters">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-use-multi-threaded-jog-warp"></a></p>
+<p><code>bool</code> <strong>Use_Multi_Threaded_Jog_Warp</strong> = <code>false</code> <a href="#class-dj-controller-property-use-multi-threaded-jog-warp">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-use-snap-style-jogwheel-grab"></a></p>
+<p><code>bool</code> <strong>Use_Snap_Style_Jogwheel_Grab</strong> = <code>false</code> <a href="#class-dj-controller-property-use-snap-style-jogwheel-grab">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jogwheel-enable-audible-scratching"></a></p>
+<p><code>bool</code> <strong>Jogwheel_Enable_Audible_Scratching</strong> = <code>true</code> <a href="#class-dj-controller-property-jogwheel-enable-audible-scratching">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-left-jogwheel-mesh"></a></p>
+<p><code>MeshInstance3D</code> <strong>Left_Jogwheel_Mesh</strong> = <code>null</code> <a href="#class-dj-controller-property-left-jogwheel-mesh">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-right-jogwheel-mesh"></a></p>
+<p><code>MeshInstance3D</code> <strong>Right_Jogwheel_Mesh</strong> = <code>null</code> <a href="#class-dj-controller-property-right-jogwheel-mesh">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-left-jogwheel-finger"></a></p>
+<p><a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>Left_Jogwheel_Finger</strong> = <code>null</code> <a href="#class-dj-controller-property-left-jogwheel-finger">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-right-jogwheel-finger"></a></p>
+<p><a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>Right_Jogwheel_Finger</strong> = <code>null</code> <a href="#class-dj-controller-property-right-jogwheel-finger">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-last-angle-radians"></a></p>
+<p>Array[<code>float</code>] <strong>_jog_last_angle_radians</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-last-angle-radians">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-has-last-angle"></a></p>
+<p>Array[<code>bool</code>] <strong>_jog_has_last_angle</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-has-last-angle">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-seek-threads"></a></p>
+<p>Array[<code>Thread</code>] <strong>_jog_seek_threads</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-seek-threads">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-seek-thread-run"></a></p>
+<p>Array[<code>bool</code>] <strong>_jog_seek_thread_run</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-seek-thread-run">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-pending-seek-seconds"></a></p>
+<p>Array[<code>float</code>] <strong>_jog_pending_seek_seconds</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-pending-seek-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-touch-active"></a></p>
+<p>Array[<code>bool</code>] <strong>_jog_touch_active</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-touch-active">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-resume-after-touch"></a></p>
+<p>Array[<code>bool</code>] <strong>_jog_resume_after_touch</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-resume-after-touch">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-virtual-position-seconds"></a></p>
+<p>Array[<code>float</code>] <strong>_jog_virtual_position_seconds</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-virtual-position-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-jog-has-virtual-position"></a></p>
+<p>Array[<code>bool</code>] <strong>_jog_has_virtual_position</strong> = <code>[...]</code> <a href="#class-dj-controller-property-jog-has-virtual-position">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-all-player-fingers"></a></p>
+<p>Array[<a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>] <strong>_all_player_fingers</strong> = <code>[]</code> <a href="#class-dj-controller-property-all-player-fingers">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-point-snapping-enabled"></a></p>
+<p>Array[<code>bool</code>] <strong>Loop_Point_Snapping_Enabled</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-point-snapping-enabled">🔗</a></p>
+<p>— Loop management (per track) — Loop points are stored in stream seconds (get_playback_position() space). Beat snapping uses base BPM metadata (LibreBox.Get_Track_BPM).</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-enabled"></a></p>
+<p>Array[<code>bool</code>] <strong>Loop_Enabled</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-enabled">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-start-sec"></a></p>
+<p>Array[<code>float</code>] <strong>Loop_Start_Sec</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-start-sec">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-end-sec"></a></p>
+<p>Array[<code>float</code>] <strong>Loop_End_Sec</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-end-sec">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-start-armed"></a></p>
+<p>Array[<code>bool</code>] <strong>Loop_Start_Armed</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-start-armed">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-end-armed"></a></p>
+<p>Array[<code>bool</code>] <strong>Loop_End_Armed</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-end-armed">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-threads"></a></p>
+<p>Array[<code>Thread</code>] <strong>_loop_threads</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-threads">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-thread-run"></a></p>
+<p>Array[<code>bool</code>] <strong>_loop_thread_run</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-thread-run">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-loop-last-seek-ms"></a></p>
+<p>Array[<code>int</code>] <strong>_loop_last_seek_ms</strong> = <code>[...]</code> <a href="#class-dj-controller-property-loop-last-seek-ms">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-performance-pad-mode-by-track"></a></p>
+<p>Array[<code>int</code>] <strong>Performance_Pad_Mode_By_Track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-performance-pad-mode-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-hot-cue-add-mode-by-track"></a></p>
+<p>Array[<code>bool</code>] <strong>Hot_Cue_Add_Mode_By_Track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-hot-cue-add-mode-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-selected-fx-set-by-track"></a></p>
+<p>Array[<code>int</code>] <strong>Selected_FX_Set_By_Track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-selected-fx-set-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-key-shift-semitones-by-track"></a></p>
+<p>Array[<code>int</code>] <strong>Key_Shift_Semitones_By_Track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-key-shift-semitones-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-hot-cue-sec-by-track"></a></p>
+<p><code>Array</code> <strong>Hot_Cue_Sec_By_Track</strong> = <code>[]</code> <a href="#class-dj-controller-property-hot-cue-sec-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-regular-cue-sec-by-track"></a></p>
+<p>Array[<code>float</code>] <strong>Regular_Cue_Sec_By_Track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-regular-cue-sec-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-regular-cue-is-set-by-track"></a></p>
+<p>Array[<code>bool</code>] <strong>_regular_cue_is_set_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-regular-cue-is-set-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-regular-cue-hold-active-by-track"></a></p>
+<p>Array[<code>bool</code>] <strong>_regular_cue_hold_active_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-regular-cue-hold-active-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-regular-cue-hold-was-playing-by-track"></a></p>
+<p>Array[<code>bool</code>] <strong>_regular_cue_hold_was_playing_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-regular-cue-hold-was-playing-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-performance-pad-controls-by-track"></a></p>
+<p><code>Array</code> <strong>_performance_pad_controls_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-performance-pad-controls-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-performance-pad-sampler-players-by-track"></a></p>
+<p><code>Array</code> <strong>_performance_pad_sampler_players_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-performance-pad-sampler-players-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-performance-pad-pulse-materials-by-track"></a></p>
+<p><code>Array</code> <strong>_performance_pad_pulse_materials_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-performance-pad-pulse-materials-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-performance-pad-fx-hold-active-by-track"></a></p>
+<p><code>Array</code> <strong>_performance_pad_fx_hold_active_by_track</strong> = <code>[...]</code> <a href="#class-dj-controller-property-performance-pad-fx-hold-active-by-track">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-performance-pad-pulse-time"></a></p>
+<p><code>float</code> <strong>_performance_pad_pulse_time</strong> = <code>0.0</code> <a href="#class-dj-controller-property-performance-pad-pulse-time">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-track-1-new-bpm"></a></p>
+<p><code>float</code> <strong>track_1_new_bpm</strong> = <code>0.0</code> <a href="#class-dj-controller-property-track-1-new-bpm">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-track-2-new-bpm"></a></p>
+<p><code>float</code> <strong>track_2_new_bpm</strong> = <code>0.0</code> <a href="#class-dj-controller-property-track-2-new-bpm">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-i"></a></p>
+<p><code>int</code> <strong>i</strong> = <code>0</code> <a href="#class-dj-controller-property-i">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-debug-visable"></a></p>
+<p><code>Variant</code> <strong>debug_visable</strong> = <code>true</code> <a href="#class-dj-controller-property-debug-visable">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-ref-bpm"></a></p>
+<p><code>float</code> <strong>ref_bpm</strong> = <code>0.0</code> <a href="#class-dj-controller-property-ref-bpm">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-move-bpm"></a></p>
+<p><code>float</code> <strong>move_bpm</strong> = <code>0.0</code> <a href="#class-dj-controller-property-move-bpm">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-stream-length"></a></p>
+<p><code>float</code> <strong>stream_length</strong> <a href="#class-dj-controller-property-stream-length">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-ref-beat-stream"></a></p>
+<p><code>float</code> <strong>ref_beat_stream</strong> <a href="#class-dj-controller-property-ref-beat-stream">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-move-beat-stream"></a></p>
+<p><code>float</code> <strong>move_beat_stream</strong> <a href="#class-dj-controller-property-move-beat-stream">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-latency-correction"></a></p>
+<p><code>float</code> <strong>latency_correction</strong> <a href="#class-dj-controller-property-latency-correction">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-ref-pos"></a></p>
+<p><code>float</code> <strong>ref_pos</strong> <a href="#class-dj-controller-property-ref-pos">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-move-pos"></a></p>
+<p><code>float</code> <strong>move_pos</strong> <a href="#class-dj-controller-property-move-pos">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-phase-ratio"></a></p>
+<p><code>float</code> <strong>phase_ratio</strong> <a href="#class-dj-controller-property-phase-ratio">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-move-beat-index"></a></p>
+<p><code>int</code> <strong>move_beat_index</strong> <a href="#class-dj-controller-property-move-beat-index">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-property-new-pos"></a></p>
+<p><code>float</code> <strong>new_pos</strong> <a href="#class-dj-controller-property-new-pos">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="method-descriptions">Method Descriptions</h2>
+<p><a id="class-dj-controller-method-get-instance-await"></a></p>
+<p><a href="#class-dj-controller">DJ_Controller</a> <strong>Get_Instance_await</strong>()  <a href="#class-dj-controller-method-get-instance-await">🔗</a></p>
+<p>Waits until singleton instance exists, then returns it.</p>
+<hr />
+<p><a id="class-dj-controller-method-get-instance"></a></p>
+<p><a href="#class-dj-controller">DJ_Controller</a> <strong>Get_Instance</strong>()  <a href="#class-dj-controller-method-get-instance">🔗</a></p>
+<p>Returns the active singleton instance.</p>
+<hr />
+<p><a id="class-dj-controller-method-get-track-playback-position"></a></p>
+<p><code>float</code> <strong>Get_Track_Playback_Position</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-track-playback-position">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-track-playback-alpha"></a></p>
+<p><code>float</code> <strong>Get_Track_Playback_Alpha</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-track-playback-alpha">🔗</a></p>
+<p>Returns 0..1 progress through current track stream, or -1 when missing stream.</p>
+<hr />
+<p><a id="class-dj-controller-method-get-track-playback-player"></a></p>
+<p><code>AudioStreamPlayer</code> <strong>Get_Track_Playback_Player</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-track-playback-player">🔗</a></p>
+<p>Returns AudioStreamPlayer backing the requested deck.</p>
+<hr />
+<p><a id="class-dj-controller-method-get-performance-pad-mode"></a></p>
+<p><code>int</code> <strong>Get_Performance_Pad_Mode</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-performance-pad-mode">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-set-performance-pad-mode"></a></p>
+<p><strong>Set_Performance_Pad_Mode</strong>(which_track: <code>int</code>, mode: <code>int</code>)  <a href="#class-dj-controller-method-set-performance-pad-mode">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-hot-cue-add-mode"></a></p>
+<p><code>bool</code> <strong>Get_Hot_Cue_Add_Mode</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-hot-cue-add-mode">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-set-hot-cue-add-mode"></a></p>
+<p><strong>Set_Hot_Cue_Add_Mode</strong>(which_track: <code>int</code>, add_mode_enabled: <code>bool</code>)  <a href="#class-dj-controller-method-set-hot-cue-add-mode">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-selected-fx-set"></a></p>
+<p><code>int</code> <strong>Get_Selected_FX_Set</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-selected-fx-set">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-has-regular-cue"></a></p>
+<p><code>bool</code> <strong>Has_Regular_Cue</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-has-regular-cue">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-regular-cue-sec"></a></p>
+<p><code>float</code> <strong>Get_Regular_Cue_Sec</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-regular-cue-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-has-hot-cue"></a></p>
+<p><code>bool</code> <strong>Has_Hot_Cue</strong>(which_track: <code>int</code>, cue_index: <code>int</code>)  <a href="#class-dj-controller-method-has-hot-cue">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-hot-cue-sec"></a></p>
+<p><code>float</code> <strong>Get_Hot_Cue_Sec</strong>(which_track: <code>int</code>, cue_index: <code>int</code>)  <a href="#class-dj-controller-method-get-hot-cue-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-clear-all-hot-cues"></a></p>
+<p><strong>Clear_All_Hot_Cues</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-clear-all-hot-cues">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-performance-pad-color"></a></p>
+<p><code>Color</code> <strong>Get_Performance_Pad_Color</strong>(pad_index: <code>int</code>)  <a href="#class-dj-controller-method-get-performance-pad-color">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-is-loop-enabled"></a></p>
+<p><code>bool</code> <strong>Is_Loop_Enabled</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-is-loop-enabled">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-loop-start-sec"></a></p>
+<p><code>float</code> <strong>Get_Loop_Start_Sec</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-loop-start-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-loop-end-sec"></a></p>
+<p><code>float</code> <strong>Get_Loop_End_Sec</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-loop-end-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-is-loop-start-armed"></a></p>
+<p><code>bool</code> <strong>Is_Loop_Start_Armed</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-is-loop-start-armed">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-is-loop-end-armed"></a></p>
+<p><code>bool</code> <strong>Is_Loop_End_Armed</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-is-loop-end-armed">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-is-loop-point-snapping-enabled"></a></p>
+<p><code>bool</code> <strong>Is_Loop_Point_Snapping_Enabled</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-is-loop-point-snapping-enabled">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-set-loop-point-snapping-enabled"></a></p>
+<p><strong>Set_Loop_Point_Snapping_Enabled</strong>(which_track: <code>int</code>, enabled: <code>bool</code>)  <a href="#class-dj-controller-method-set-loop-point-snapping-enabled">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-clear-loop"></a></p>
+<p><strong>Clear_Loop</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-clear-loop">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-setup-performance-pad-defaults"></a></p>
+<p><strong>_setup_performance_pad_defaults</strong>() <a href="#class-dj-controller-private-method-setup-performance-pad-defaults">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-setup-performance-pad-nodes-and-signals"></a></p>
+<p><strong>_setup_performance_pad_nodes_and_signals</strong>() <a href="#class-dj-controller-private-method-setup-performance-pad-nodes-and-signals">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-cache-and-connect-performance-pads-for-track"></a></p>
+<p><strong>_cache_and_connect_performance_pads_for_track</strong>(which_track: <code>int</code>, pad_group: <code>Node</code>) <a href="#class-dj-controller-private-method-cache-and-connect-performance-pads-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-performance-pad-on-activated"></a></p>
+<p><strong>_on_performance_pad_on_activated</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-on-performance-pad-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-performance-pad-handle-hot-cue"></a></p>
+<p><strong>_performance_pad_handle_hot_cue</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-performance-pad-handle-hot-cue">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-performance-pad-handle-sampler"></a></p>
+<p><strong>_performance_pad_handle_sampler</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-performance-pad-handle-sampler">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-performance-pad-handle-fx-hold"></a></p>
+<p><strong>_performance_pad_handle_fx_hold</strong>(which_track: <code>int</code>, pad_index: <code>int</code>, is_pressed: <code>bool</code>) <a href="#class-dj-controller-private-method-performance-pad-handle-fx-hold">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-clear-held-fx-for-track"></a></p>
+<p><strong>_clear_held_fx_for_track</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-clear-held-fx-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-performance-pad-handle-beat-jump"></a></p>
+<p><strong>_performance_pad_handle_beat_jump</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-performance-pad-handle-beat-jump">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-performance-pad-handle-key-shift"></a></p>
+<p><strong>_performance_pad_handle_key_shift</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-performance-pad-handle-key-shift">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-update-performance-pad-feedback"></a></p>
+<p><strong>_update_performance_pad_feedback</strong>(delta: <code>float</code>) <a href="#class-dj-controller-private-method-update-performance-pad-feedback">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-update-performance-pad-label"></a></p>
+<p><strong>_update_performance_pad_label</strong>(which_track: <code>int</code>, pad_index: <code>int</code>, pad_control: <a href="../Controls/Base_Control_Class/#class-base-control">Base_Control</a>) <a href="#class-dj-controller-private-method-update-performance-pad-label">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-fx-context-for-pad"></a></p>
+<p><code>Dictionary</code> <strong>_get_fx_context_for_pad</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-get-fx-context-for-pad">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-performance-pad-pressed"></a></p>
+<p><strong>_on_performance_pad_pressed</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-on-performance-pad-pressed">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-performance-pad-released"></a></p>
+<p><strong>_on_performance_pad_released</strong>(which_track: <code>int</code>, pad_index: <code>int</code>) <a href="#class-dj-controller-private-method-on-performance-pad-released">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-beat-len-stream-sec"></a></p>
+<p><code>float</code> <strong>_beat_len_stream_sec</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-beat-len-stream-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-stream-len-sec"></a></p>
+<p><code>float</code> <strong>_stream_len_sec</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-stream-len-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-loop-quantized-point-sec"></a></p>
+<p><code>float</code> <strong>_get_loop_quantized_point_sec</strong>(which_track: <code>int</code>, use_beat_start: <code>bool</code>, use_beat_end: <code>bool</code>) <a href="#class-dj-controller-private-method-get-loop-quantized-point-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-set-loop-points-sec"></a></p>
+<p><strong>_set_loop_points_sec</strong>(which_track: <code>int</code>, start_sec: <code>float</code>, end_sec: <code>float</code>) <a href="#class-dj-controller-private-method-set-loop-points-sec">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-loop-seek-on-main"></a></p>
+<p><strong>_loop_seek_on_main</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-loop-seek-on-main">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-loop-thread-main"></a></p>
+<p><strong>_loop_thread_main</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-loop-thread-main">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-loop-set-start-point"></a></p>
+<p><strong>Loop_Set_Start_Point</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-method-loop-set-start-point">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-loop-set-end-point"></a></p>
+<p><strong>Loop_Set_End_Point</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-method-loop-set-end-point">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-loop-make-4-beat-toggle"></a></p>
+<p><strong>Loop_Make_4_Beat_Toggle</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-method-loop-make-4-beat-toggle">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-loop-shorten"></a></p>
+<p><strong>Loop_Shorten</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-method-loop-shorten">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-loop-extend"></a></p>
+<p><strong>Loop_Extend</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-method-loop-extend">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-loadtrackintomemory"></a></p>
+<p><strong>LoadTrackIntoMemory</strong>(which_track: <code>int</code>, which_song: <a href="../../Audio/Song%20Class/#class-song">Song</a>) <a href="#class-dj-controller-method-loadtrackintomemory">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-play-pause"></a></p>
+<p><strong>Play_Pause</strong>(p_which_track: <code>int</code>) <a href="#class-dj-controller-method-play-pause">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-ready"></a></p>
+<p><strong>_ready</strong>() <a href="#class-dj-controller-private-method-ready">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-configure-knob-popup-labels"></a></p>
+<p><strong>_configure_knob_popup_labels</strong>() <a href="#class-dj-controller-private-method-configure-knob-popup-labels">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-exit-tree"></a></p>
+<p><strong>_exit_tree</strong>() <a href="#class-dj-controller-private-method-exit-tree">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-start-loop-threads"></a></p>
+<p><strong>_start_loop_threads</strong>() <a href="#class-dj-controller-private-method-start-loop-threads">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-start-jog-seek-threads"></a></p>
+<p><strong>_start_jog_seek_threads</strong>() <a href="#class-dj-controller-private-method-start-jog-seek-threads">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-stop-jog-seek-threads"></a></p>
+<p><strong>_stop_jog_seek_threads</strong>() <a href="#class-dj-controller-private-method-stop-jog-seek-threads">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-jog-seek-thread-main"></a></p>
+<p><strong>_jog_seek_thread_main</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-jog-seek-thread-main">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-setup-jogwheel-targets"></a></p>
+<p><strong>_setup_jogwheel_targets</strong>() <a href="#class-dj-controller-private-method-setup-jogwheel-targets">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-collect-player-fingers"></a></p>
+<p><strong>_collect_player_fingers</strong>(root_node: <code>Node</code>) <a href="#class-dj-controller-private-method-collect-player-fingers">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-is-pose-allowed-for-jogwheel"></a></p>
+<p><code>bool</code> <strong>_is_pose_allowed_for_jogwheel</strong>(which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>) <a href="#class-dj-controller-private-method-is-pose-allowed-for-jogwheel">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-is-finger-allowed-for-track"></a></p>
+<p><code>bool</code> <strong>_is_finger_allowed_for_track</strong>(which_track: <code>int</code>, which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>) <a href="#class-dj-controller-private-method-is-finger-allowed-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-jogwheel-mesh-for-track"></a></p>
+<p><code>MeshInstance3D</code> <strong>_get_jogwheel_mesh_for_track</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-get-jogwheel-mesh-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-jogwheel-finger-for-track"></a></p>
+<p><a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>_get_jogwheel_finger_for_track</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-get-jogwheel-finger-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-set-jogwheel-finger-for-track"></a></p>
+<p><strong>_set_jogwheel_finger_for_track</strong>(which_track: <code>int</code>, which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>) <a href="#class-dj-controller-private-method-set-jogwheel-finger-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-clear-jog-angle-tracking"></a></p>
+<p><strong>_clear_jog_angle_tracking</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-clear-jog-angle-tracking">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-jogwheel-anchor-for-track"></a></p>
+<p><code>Node3D</code> <strong>_get_jogwheel_anchor_for_track</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-get-jogwheel-anchor-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-jogwheel-touch-angle-radians"></a></p>
+<p><code>float</code> <strong>_get_jogwheel_touch_angle_radians</strong>(which_track: <code>int</code>, which_finger: <a href="../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a>) <a href="#class-dj-controller-private-method-get-jogwheel-touch-angle-radians">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-apply-track-seek"></a></p>
+<p><strong>_apply_track_seek</strong>(which_track: <code>int</code>, seek_seconds: <code>float</code>) <a href="#class-dj-controller-private-method-apply-track-seek">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-warp-track-from-jogwheel"></a></p>
+<p><strong>_warp_track_from_jogwheel</strong>(which_track: <code>int</code>, rotation_radians: <code>float</code>) <a href="#class-dj-controller-private-method-warp-track-from-jogwheel">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-rotate-jogwheel-mesh-visual"></a></p>
+<p><strong>_rotate_jogwheel_mesh_visual</strong>(which_track: <code>int</code>, rotation_radians: <code>float</code>) <a href="#class-dj-controller-private-method-rotate-jogwheel-mesh-visual">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-get-jogwheel-activation-for-track"></a></p>
+<p><code>Area3D</code> <strong>_get_jogwheel_activation_for_track</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-get-jogwheel-activation-for-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-release-jogwheel-finger-if-out-of-snap-range"></a></p>
+<p><strong>_release_jogwheel_finger_if_out_of_snap_range</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-release-jogwheel-finger-if-out-of-snap-range">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-try-acquire-jogwheel-finger-from-overlap"></a></p>
+<p><strong>_try_acquire_jogwheel_finger_from_overlap</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-try-acquire-jogwheel-finger-from-overlap">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-resume-track-after-jog-touch"></a></p>
+<p><strong>_resume_track_after_jog_touch</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-resume-track-after-jog-touch">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-update-jogwheel-track"></a></p>
+<p><strong>_update_jogwheel_track</strong>(which_track: <code>int</code>, delta: <code>float</code>) <a href="#class-dj-controller-private-method-update-jogwheel-track">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-jog-activation-area-entered"></a></p>
+<p><strong>_on_left_jog_activation_area_entered</strong>(area: <code>Area3D</code>) <a href="#class-dj-controller-private-method-on-left-jog-activation-area-entered">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-jog-activation-area-exited"></a></p>
+<p><strong>_on_left_jog_activation_area_exited</strong>(area: <code>Area3D</code>) <a href="#class-dj-controller-private-method-on-left-jog-activation-area-exited">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-jog-activation-area-entered"></a></p>
+<p><strong>_on_right_jog_activation_area_entered</strong>(area: <code>Area3D</code>) <a href="#class-dj-controller-private-method-on-right-jog-activation-area-entered">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-jog-activation-area-exited"></a></p>
+<p><strong>_on_right_jog_activation_area_exited</strong>(area: <code>Area3D</code>) <a href="#class-dj-controller-private-method-on-right-jog-activation-area-exited">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-stop-loop-threads"></a></p>
+<p><strong>_stop_loop_threads</strong>() <a href="#class-dj-controller-private-method-stop-loop-threads">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-play-on-activated"></a></p>
+<p><strong>_on_left_play_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-play-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-play-on-activated"></a></p>
+<p><strong>_on_right_play_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-play-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-cue-on-pressed"></a></p>
+<p><strong>_on_left_cue_on_pressed</strong>() <a href="#class-dj-controller-private-method-on-left-cue-on-pressed">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-cue-on-pressed"></a></p>
+<p><strong>_on_right_cue_on_pressed</strong>() <a href="#class-dj-controller-private-method-on-right-cue-on-pressed">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-cue-on-released"></a></p>
+<p><strong>_on_left_cue_on_released</strong>() <a href="#class-dj-controller-private-method-on-left-cue-on-released">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-cue-on-released"></a></p>
+<p><strong>_on_right_cue_on_released</strong>() <a href="#class-dj-controller-private-method-on-right-cue-on-released">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-cue-pressed"></a></p>
+<p><strong>_on_cue_pressed</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-on-cue-pressed">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-cue-released"></a></p>
+<p><strong>_on_cue_released</strong>(which_track: <code>int</code>) <a href="#class-dj-controller-private-method-on-cue-released">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-update-channel-dbs"></a></p>
+<p><strong>Update_Channel_DBs</strong>() <a href="#class-dj-controller-method-update-channel-dbs">🔗</a></p>
+<p>Updates channel output levels using crossfader and channel faders.</p>
+<hr />
+<p><a id="class-dj-controller-method-update-channel-trim-eq-cfx"></a></p>
+<p><strong>Update_Channel_Trim_EQ_CFX</strong>() <a href="#class-dj-controller-method-update-channel-trim-eq-cfx">🔗</a></p>
+<p>Updates trim, EQ, and colour FX bus effect parameters for both decks. Slot layout: trim=0, EQ=1, low-pass=2, high-pass=3.</p>
+<hr />
+<p><a id="class-dj-controller-method-get-track-current-bpm"></a></p>
+<p><code>float</code> <strong>Get_Track_Current_BPM</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-track-current-bpm">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-get-track-speed-mult"></a></p>
+<p><code>float</code> <strong>Get_Track_Speed_Mult</strong>(which_track: <code>int</code>)  <a href="#class-dj-controller-method-get-track-speed-mult">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-method-update-channel-tempo-adjusts"></a></p>
+<p><strong>Update_Channel_Tempo_Adjusts</strong>() <a href="#class-dj-controller-method-update-channel-tempo-adjusts">🔗</a></p>
+<p>Updates per-deck tempo/pitch from tempo sliders and sync state.</p>
+<hr />
+<p><a id="class-dj-controller-private-method-process"></a></p>
+<p><strong>_process</strong>(delta: <code>float</code>) <a href="#class-dj-controller-private-method-process">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-physics-process"></a></p>
+<p><strong>_physics_process</strong>(delta: <code>float</code>) <a href="#class-dj-controller-private-method-physics-process">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-reset-area-area-entered"></a></p>
+<p><strong>_on_reset_area_area_entered</strong>(area: <code>Area3D</code>) <a href="#class-dj-controller-private-method-on-reset-area-area-entered">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-set-collision-shapes-visible-recursive"></a></p>
+<p><strong>_set_collision_shapes_visible_recursive</strong>(node: <code>Node</code>, visible: <code>bool</code>) <a href="#class-dj-controller-private-method-set-collision-shapes-visible-recursive">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-disable-debig-shapes-area-entered"></a></p>
+<p><strong>_on_disable_debig_shapes_area_entered</strong>(area: <code>Area3D</code>) <a href="#class-dj-controller-private-method-on-disable-debig-shapes-area-entered">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-beat-sync-on-activated"></a></p>
+<p><strong>_on_left_beat_sync_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-beat-sync-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-beat-sync-on-activated"></a></p>
+<p><strong>_on_right_beat_sync_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-beat-sync-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-loop-start-on-activated"></a></p>
+<p><strong>_on_left_loop_start_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-loop-start-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-loop-end-on-activated"></a></p>
+<p><strong>_on_left_loop_end_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-loop-end-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-make-4-beat-loop-on-activated"></a></p>
+<p><strong>_on_left_make_4_beat_loop_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-make-4-beat-loop-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-shorten-loop-on-activated"></a></p>
+<p><strong>_on_left_shorten_loop_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-shorten-loop-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-left-extend-loop-on-activated"></a></p>
+<p><strong>_on_left_extend_loop_on_activated</strong>() <a href="#class-dj-controller-private-method-on-left-extend-loop-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-loop-start-on-activated"></a></p>
+<p><strong>_on_right_loop_start_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-loop-start-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-loop-end-on-activated"></a></p>
+<p><strong>_on_right_loop_end_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-loop-end-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-make-4-beat-loop-on-activated"></a></p>
+<p><strong>_on_right_make_4_beat_loop_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-make-4-beat-loop-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-shorten-loop-on-activated"></a></p>
+<p><strong>_on_right_shorten_loop_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-shorten-loop-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-right-extend-loop-on-activated"></a></p>
+<p><strong>_on_right_extend_loop_on_activated</strong>() <a href="#class-dj-controller-private-method-on-right-extend-loop-on-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-dj-controller-private-method-seek-track-phase-to-match"></a></p>
+<p><strong>_seek_track_phase_to_match</strong>(track_to_move: <code>int</code>, reference_track: <code>int</code>) <a href="#class-dj-controller-private-method-seek-track-phase-to-match">🔗</a></p>
+<p>Aligns moved track beat phase to reference track. This adjusts beat phase only, not absolute song position.</p>
+<hr />
+<p><a id="class-dj-controller-private-method-on-select-fx-activated"></a></p>
+<p><strong>_on_Select_FX_activated</strong>() <a href="#class-dj-controller-private-method-on-select-fx-activated">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

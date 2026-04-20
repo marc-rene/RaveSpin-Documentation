@@ -1,0 +1,2402 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://marc-rene.github.io/RaveSpin-Documentation/Codebase/Audio/Bus%20Manager/">
+      
+      
+        <link rel="prev" href="../Audio%20Metadata%20Class/">
+      
+      
+        <link rel="next" href="../Song%20Class/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Bus Manager - RaveSpin XR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bus_manager" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="RaveSpin XR" class="md-header__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaveSpin XR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bus Manager
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RaveSpin XR" class="md-nav__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    RaveSpin XR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Addons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Addons/Waveform%20Generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveform Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Album_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Album Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Artist%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artist Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Audio%20Metadata%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Metadata Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Song%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Properties
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Properties
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Properties/Genre%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genre Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Properties/Music%20Key%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Key Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Properties/Track%20Origins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DJ Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/DJ_Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Base_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Knob_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Performance_Pad_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Pad Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ%20Controller/Controls/Slider_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slider Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Global
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Player_Finger_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Finger Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Scripts_Arena_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts Arena Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Global/Startxr_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startxr Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Librebox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Ui_Librebox_Components_Recording_Gd_Recording_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Active_Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Bpm_Spinner_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bpm Spinner Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Db_Meter_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Meter Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Hub/Librebox_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_5" id="__nav_3_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Add_Track_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Track Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Librebox_Trackselection_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Trackselection Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Librebox/Track%20Management/Trackdeleteconfirmui_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trackdeleteconfirmui Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- DO NOT EDIT THIS FILE!!! -->
+<!-- Generated automatically from Godot engine sources. -->
+<!-- Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. -->
+<!-- XML source: https://github.com/godotengine/godot/tree/master/../RaveSpin/Documentation/gen_docs/BUS_MANAGER.xml. -->
+
+<p><a id="class-bus-manager"></a></p>
+<h1 id="bus_manager">BUS_MANAGER</h1>
+<p><strong>Inherits:</strong> <code>Node</code></p>
+<p>Audio bus and FX helper for DJ controller runtime Keeps bus names/slots aligned with Main Audio Bus Layout V2.tres.</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th><code>bool</code></th>
+<th><a href="#class-bus-manager-property-one-fx-at-a-time">ONE_FX_AT_A_TIME</a></th>
+<th><code>true</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#enum-bus-manager-e-track-fx-policy">E_Track_FX_Policy</a></td>
+<td><a href="#class-bus-manager-property-current-track-fx-policy">CURRENT_TRACK_FX_POLICY</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a></td>
+<td><a href="#class-bus-manager-property-active-effects-channel-1">active_effects_Channel_1</a></td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a></td>
+<td><a href="#class-bus-manager-property-active-effects-channel-2">active_effects_Channel_2</a></td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>Array[<code>float</code>]</td>
+<td><a href="#class-bus-manager-property-pitch-shift-scale-override-by-channel">_pitch_shift_scale_override_by_channel</a></td>
+<td><code>[...]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th><code>bool</code></th>
+<th><a href="#class-bus-manager-method-allow-multiple-fx-at-same-time">Allow_Multiple_FX_at_same_time</a>()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-set-allow-multiple-fx-at-same-time">Set_Allow_Multiple_FX_at_same_time</a>(enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-bus-manager-method-toggle-allow-multiple-fx-at-same-time">Toggle_Allow_Multiple_FX_at_same_time</a>()</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-bus-manager-method-can-track-1-take-fx">Can_Track_1_Take_FX</a>()</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-bus-manager-method-can-track-2-take-fx">Can_Track_2_Take_FX</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-set-track-1-can-take-fx">Set_Track_1_can_take_FX</a>(enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-set-track-2-can-take-fx">Set_Track_2_can_take_FX</a>(enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-bus-manager-method-beat-fx-translation-key">beat_fx_translation_key</a>(fx: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-set-pitch-shift-semitone-override">Set_Pitch_Shift_Semitone_Override</a>(channel: <code>int</code>, semitones: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-clear-pitch-shift-semitone-override">Clear_Pitch_Shift_Semitone_Override</a>(channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-bus-manager-private-method-get-pitch-shift-scale-override">_get_pitch_shift_scale_override</a>(channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a></td>
+<td><a href="#class-bus-manager-method-calculate-weights-normal">Calculate_Weights_Normal</a>(low_alpha: <code>float</code> = 0.5, mid_alpha: <code>float</code> = 0.5, high_alpha: <code>float</code> = 0.5)</td>
+</tr>
+<tr>
+<td><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a></td>
+<td><a href="#class-bus-manager-method-calculate-weights-db">Calculate_Weights_DB</a>(low_alpha: <code>float</code> = 0.5, mid_alpha: <code>float</code> = 0.5, high_alpha: <code>float</code> = 0.5)</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-bus-manager-method-get-channel-index-e">Get_Channel_Index_e</a>(Which_Bus: <a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a>)</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-bus-manager-method-get-channel-index-i">Get_Channel_Index_i</a>(Which_Channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-bus-manager-method-get-beat-fx-class">get_beat_fx_class</a>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>)</td>
+</tr>
+<tr>
+<td><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a></td>
+<td><a href="#class-bus-manager-private-method-get-active-effects-for-channel">_get_active_effects_for_channel</a>(channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-bus-manager-private-method-get-next-free-slot">_get_next_free_slot</a>(channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>AudioEffect</code></td>
+<td><a href="#class-bus-manager-private-method-create-beat-fx-instance">_create_beat_fx_instance</a>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-add-beat-fx">add_beat_fx</a>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-remove-beat-fx">remove_beat_fx</a>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-toggle-beat-fx">toggle_beat_fx</a>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-bus-manager-method-is-beat-fx-active">is_beat_fx_active</a>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-method-apply-beat-fx-level">Apply_Beat_FX_Level</a>(channel: <code>int</code>, alpha: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-bus-manager-private-method-set-beat-fx-effect-level">_set_beat_fx_effect_level</a>(effect: <code>AudioEffect</code>, fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, alpha: <code>float</code>, channel: <code>int</code> = 0)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="enumerations">Enumerations</h2>
+<p><a id="enum-bus-manager-e-track-fx-policy"></a></p>
+<p>enum <strong>E_Track_FX_Policy</strong>: <a href="#enum-bus-manager-e-track-fx-policy">🔗</a></p>
+<p><a id="class-bus-manager-constant-fx-disabled"></a></p>
+<p><a href="#enum-bus-manager-e-track-fx-policy">E_Track_FX_Policy</a> <strong>FX_Disabled</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-only-track-1"></a></p>
+<p><a href="#enum-bus-manager-e-track-fx-policy">E_Track_FX_Policy</a> <strong>Only_Track_1</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-only-track-2"></a></p>
+<p><a href="#enum-bus-manager-e-track-fx-policy">E_Track_FX_Policy</a> <strong>Only_Track_2</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-both-tracks"></a></p>
+<p><a href="#enum-bus-manager-e-track-fx-policy">E_Track_FX_Policy</a> <strong>Both_Tracks</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-e-audio-busses"></a></p>
+<p>enum <strong>E_AUDIO_BUSSES</strong>: <a href="#enum-bus-manager-e-audio-busses">🔗</a></p>
+<p><a id="class-bus-manager-constant-master"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>MASTER</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-microphone-input"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>MICROPHONE_INPUT</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-channel-one-input"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>CHANNEL_ONE_INPUT</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-channel-two-input"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>CHANNEL_TWO_INPUT</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-channel-three-input"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>CHANNEL_THREE_INPUT</strong> = <code>4</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-channel-four-input"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>CHANNEL_FOUR_INPUT</strong> = <code>5</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-bus-manager-e-audio-busses"></a></p>
+<p>enum <strong>BUS_MANAGER.E_AUDIO_BUSSES</strong>: <a href="#enum-bus-manager-bus-manager-e-audio-busses">🔗</a></p>
+<p><a id="class-bus-manager-constant-bus-names"></a></p>
+<p><a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a> <strong>BUS_NAMES</strong> = <code>Dictionary[int, StringName]({0: &amp;"Master", 1: &amp;"Microphone Input", 2: &amp;"Channel 1 Input", 3: &amp;"Channel 2 Input", 4: &amp;"Channel 3 Input", 5: &amp;"Channel 4 Input"})</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-e-core-effects-order"></a></p>
+<p>enum <strong>E_CORE_EFFECTS_ORDER</strong>: <a href="#enum-bus-manager-e-core-effects-order">🔗</a></p>
+<p><a id="class-bus-manager-constant-trim"></a></p>
+<p><a href="#enum-bus-manager-e-core-effects-order">E_CORE_EFFECTS_ORDER</a> <strong>TRIM</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq-high"></a></p>
+<p><a href="#enum-bus-manager-e-core-effects-order">E_CORE_EFFECTS_ORDER</a> <strong>EQ_HIGH</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq-mid"></a></p>
+<p><a href="#enum-bus-manager-e-core-effects-order">E_CORE_EFFECTS_ORDER</a> <strong>EQ_MID</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq-low"></a></p>
+<p><a href="#enum-bus-manager-e-core-effects-order">E_CORE_EFFECTS_ORDER</a> <strong>EQ_LOW</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-sound-color-fx"></a></p>
+<p><a href="#enum-bus-manager-e-core-effects-order">E_CORE_EFFECTS_ORDER</a> <strong>SOUND_COLOR_FX</strong> = <code>4</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-e-band-hz"></a></p>
+<p>enum <strong>E_BAND_HZ</strong>: <a href="#enum-bus-manager-e-band-hz">🔗</a></p>
+<p><a id="class-bus-manager-constant-hz-32"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>HZ_32</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-hz-100"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>HZ_100</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-hz-320"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>HZ_320</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-hz-1000"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>HZ_1000</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-hz-3200"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>HZ_3200</strong> = <code>4</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-hz-10000"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>HZ_10000</strong> = <code>5</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-bus-manager-e-band-hz"></a></p>
+<p>enum <strong>BUS_MANAGER.E_BAND_HZ</strong>: <a href="#enum-bus-manager-bus-manager-e-band-hz">🔗</a></p>
+<p><a id="class-bus-manager-constant-eq6-low-weights"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>EQ6_LOW_WEIGHTS</strong> = <code>Dictionary[int, float]({0: 1.0, 1: 0.8, 2: 0.3, 3: 0.0, 4: 0.0, 5: 0.0})</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq6-mid-weights"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>EQ6_MID_WEIGHTS</strong> = <code>Dictionary[int, float]({0: 0.0, 1: 0.2, 2: 0.7, 3: 1.0, 4: 0.4, 5: 0.0})</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq6-high-weights"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>EQ6_HIGH_WEIGHTS</strong> = <code>Dictionary[int, float]({0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.6, 5: 1.0})</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-e-beat-fx-type"></a></p>
+<p>enum <strong>E_BEAT_FX_TYPE</strong>: <a href="#enum-bus-manager-e-beat-fx-type">🔗</a></p>
+<p><a id="class-bus-manager-constant-delay"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>DELAY</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-echo"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>ECHO</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-reverb"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>REVERB</strong> = <code>2</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-trans"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>TRANS</strong> = <code>3</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-flanger"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>FLANGER</strong> = <code>4</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-phaser"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>PHASER</strong> = <code>5</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-pitch"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>PITCH</strong> = <code>6</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-crush"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>CRUSH</strong> = <code>7</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-compressor"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>COMPRESSOR</strong> = <code>8</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-limiter"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>LIMITER</strong> = <code>9</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-band-pass"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>BAND_PASS</strong> = <code>10</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-panner"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>PANNER</strong> = <code>11</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-stereo-enhance"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>STEREO_ENHANCE</strong> = <code>12</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-distortion"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>DISTORTION</strong> = <code>13</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="enum-bus-manager-bus-manager-e-beat-fx-type"></a></p>
+<p>enum <strong>BUS_MANAGER.E_BEAT_FX_TYPE</strong>: <a href="#enum-bus-manager-bus-manager-e-beat-fx-type">🔗</a></p>
+<p><a id="class-bus-manager-constant-beat-fx-names"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>Beat_FX_Names</strong> = <code>Dictionary[int, String]({0: "DELAY", 1: "ECHO", 2: "REVERB", 3: "TRANS", 4: "FLANGER", 5: "PHASER", 6: "PITCH", 7: "CRUSH", 8: "COMPRESSOR", 9: "LIMITER", 10: "BAND PASS", 11: "PANNER", 12: "STEREO ENHANCE", 13: "DISTORTION"})</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-beat-fx-translation-keys"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>Beat_FX_Translation_Keys</strong> = <code>Dictionary[int, String]({0: "KEY_FX_DELAY", 1: "KEY_FX_ECHO", 2: "KEY_FX_REVERB", 3: "KEY_FX_TRANS", 4: "KEY_FX_FLANGER", 5: "KEY_FX_PHASER", 6: "KEY_FX_PITCH", 7: "KEY_FX_CRUSH", 8: "KEY_FX_COMPRESSOR", 9: "KEY_FX_LIMITER", 10: "KEY_FX_BAND_PASS", 11: "KEY_FX_PANNER", 12: "KEY_FX_STEREO_ENHANCE", 13: "KEY_FX_DISTORTION"})</code></p>
+<p>Translation CSV keys (see Language/LANG_Translation.csv).</p>
+<hr />
+<h2 id="constants">Constants</h2>
+<p><a id="class-bus-manager-constant-cfx-lowpass-slot"></a></p>
+<p><strong>CFX_LOWPASS_SLOT</strong> = <code>2</code> <a href="#class-bus-manager-constant-cfx-lowpass-slot">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-cfx-highpass-slot"></a></p>
+<p><strong>CFX_HIGHPASS_SLOT</strong> = <code>3</code> <a href="#class-bus-manager-constant-cfx-highpass-slot">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-beat-fx-slot-single"></a></p>
+<p><strong>BEAT_FX_SLOT_SINGLE</strong> = <code>4</code> <a href="#class-bus-manager-constant-beat-fx-slot-single">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-trim-db-neutral"></a></p>
+<p><strong>TRIM_DB_NEUTRAL</strong> = <code>0.0</code> <a href="#class-bus-manager-constant-trim-db-neutral">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-trim-db-min"></a></p>
+<p><strong>TRIM_DB_MIN</strong> = <code>-24.0</code> <a href="#class-bus-manager-constant-trim-db-min">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-trim-db-max"></a></p>
+<p><strong>TRIM_DB_MAX</strong> = <code>24.0</code> <a href="#class-bus-manager-constant-trim-db-max">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq-db-neutral"></a></p>
+<p><strong>EQ_DB_NEUTRAL</strong> = <code>0.0</code> <a href="#class-bus-manager-constant-eq-db-neutral">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq-db-min"></a></p>
+<p><strong>EQ_DB_MIN</strong> = <code>-60.0</code> <a href="#class-bus-manager-constant-eq-db-min">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-eq-db-max"></a></p>
+<p><strong>EQ_DB_MAX</strong> = <code>24.0</code> <a href="#class-bus-manager-constant-eq-db-max">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-cfx-cutoff-closed-hz"></a></p>
+<p><strong>CFX_CUTOFF_CLOSED_HZ</strong> = <code>100.0</code> <a href="#class-bus-manager-constant-cfx-cutoff-closed-hz">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-bus-manager-constant-cfx-cutoff-open-hz"></a></p>
+<p><strong>CFX_CUTOFF_OPEN_HZ</strong> = <code>22000.0</code> <a href="#class-bus-manager-constant-cfx-cutoff-open-hz">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="property-descriptions">Property Descriptions</h2>
+<p><a id="class-bus-manager-property-one-fx-at-a-time"></a></p>
+<p><code>bool</code> <strong>ONE_FX_AT_A_TIME</strong> = <code>true</code> <a href="#class-bus-manager-property-one-fx-at-a-time">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-property-current-track-fx-policy"></a></p>
+<p><a href="#enum-bus-manager-e-track-fx-policy">E_Track_FX_Policy</a> <strong>CURRENT_TRACK_FX_POLICY</strong> = <code>0</code> <a href="#class-bus-manager-property-current-track-fx-policy">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-property-active-effects-channel-1"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>active_effects_Channel_1</strong> = <code>{}</code> <a href="#class-bus-manager-property-active-effects-channel-1">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-property-active-effects-channel-2"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>active_effects_Channel_2</strong> = <code>{}</code> <a href="#class-bus-manager-property-active-effects-channel-2">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-property-pitch-shift-scale-override-by-channel"></a></p>
+<p>Array[<code>float</code>] <strong>_pitch_shift_scale_override_by_channel</strong> = <code>[...]</code> <a href="#class-bus-manager-property-pitch-shift-scale-override-by-channel">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="method-descriptions">Method Descriptions</h2>
+<p><a id="class-bus-manager-method-allow-multiple-fx-at-same-time"></a></p>
+<p><code>bool</code> <strong>Allow_Multiple_FX_at_same_time</strong>()  <a href="#class-bus-manager-method-allow-multiple-fx-at-same-time">🔗</a></p>
+<p>Returns true when stacking more than one beat FX at once is allowed.</p>
+<hr />
+<p><a id="class-bus-manager-method-set-allow-multiple-fx-at-same-time"></a></p>
+<p><strong>Set_Allow_Multiple_FX_at_same_time</strong>(enabled: <code>bool</code>)  <a href="#class-bus-manager-method-set-allow-multiple-fx-at-same-time">🔗</a></p>
+<p>Enables or disables beat FX stacking mode.</p>
+<hr />
+<p><a id="class-bus-manager-method-toggle-allow-multiple-fx-at-same-time"></a></p>
+<p><code>bool</code> <strong>Toggle_Allow_Multiple_FX_at_same_time</strong>()  <a href="#class-bus-manager-method-toggle-allow-multiple-fx-at-same-time">🔗</a></p>
+<p>false means we cant do multiple FX at the same time now</p>
+<hr />
+<p><a id="class-bus-manager-method-can-track-1-take-fx"></a></p>
+<p><code>bool</code> <strong>Can_Track_1_Take_FX</strong>()  <a href="#class-bus-manager-method-can-track-1-take-fx">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-can-track-2-take-fx"></a></p>
+<p><code>bool</code> <strong>Can_Track_2_Take_FX</strong>()  <a href="#class-bus-manager-method-can-track-2-take-fx">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-set-track-1-can-take-fx"></a></p>
+<p><strong>Set_Track_1_can_take_FX</strong>(enabled: <code>bool</code>)  <a href="#class-bus-manager-method-set-track-1-can-take-fx">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-set-track-2-can-take-fx"></a></p>
+<p><strong>Set_Track_2_can_take_FX</strong>(enabled: <code>bool</code>)  <a href="#class-bus-manager-method-set-track-2-can-take-fx">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-beat-fx-translation-key"></a></p>
+<p><code>String</code> <strong>beat_fx_translation_key</strong>(fx: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>)  <a href="#class-bus-manager-method-beat-fx-translation-key">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-set-pitch-shift-semitone-override"></a></p>
+<p><strong>Set_Pitch_Shift_Semitone_Override</strong>(channel: <code>int</code>, semitones: <code>int</code>)  <a href="#class-bus-manager-method-set-pitch-shift-semitone-override">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-clear-pitch-shift-semitone-override"></a></p>
+<p><strong>Clear_Pitch_Shift_Semitone_Override</strong>(channel: <code>int</code>)  <a href="#class-bus-manager-method-clear-pitch-shift-semitone-override">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-private-method-get-pitch-shift-scale-override"></a></p>
+<p><code>float</code> <strong>_get_pitch_shift_scale_override</strong>(channel: <code>int</code>)  <a href="#class-bus-manager-private-method-get-pitch-shift-scale-override">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-calculate-weights-normal"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>Calculate_Weights_Normal</strong>(low_alpha: <code>float</code> = 0.5, mid_alpha: <code>float</code> = 0.5, high_alpha: <code>float</code> = 0.5)  <a href="#class-bus-manager-method-calculate-weights-normal">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-calculate-weights-db"></a></p>
+<p><a href="#enum-bus-manager-e-band-hz">E_BAND_HZ</a> <strong>Calculate_Weights_DB</strong>(low_alpha: <code>float</code> = 0.5, mid_alpha: <code>float</code> = 0.5, high_alpha: <code>float</code> = 0.5)  <a href="#class-bus-manager-method-calculate-weights-db">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-get-channel-index-e"></a></p>
+<p><code>int</code> <strong>Get_Channel_Index_e</strong>(Which_Bus: <a href="#enum-bus-manager-e-audio-busses">E_AUDIO_BUSSES</a>)  <a href="#class-bus-manager-method-get-channel-index-e">🔗</a></p>
+<p>Returns AudioServer bus index for enum bus id</p>
+<hr />
+<p><a id="class-bus-manager-method-get-channel-index-i"></a></p>
+<p><code>int</code> <strong>Get_Channel_Index_i</strong>(Which_Channel: <code>int</code>)  <a href="#class-bus-manager-method-get-channel-index-i">🔗</a></p>
+<p>Returns deck input bus index for track number</p>
+<hr />
+<p><a id="class-bus-manager-method-get-beat-fx-class"></a></p>
+<p><code>Variant</code> <strong>get_beat_fx_class</strong>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>)  <a href="#class-bus-manager-method-get-beat-fx-class">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-private-method-get-active-effects-for-channel"></a></p>
+<p><a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a> <strong>_get_active_effects_for_channel</strong>(channel: <code>int</code>)  <a href="#class-bus-manager-private-method-get-active-effects-for-channel">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-private-method-get-next-free-slot"></a></p>
+<p><code>int</code> <strong>_get_next_free_slot</strong>(channel: <code>int</code>)  <a href="#class-bus-manager-private-method-get-next-free-slot">🔗</a></p>
+<p>whats the next free slot in our bus for us to add an FX? get the index of that slot</p>
+<hr />
+<p><a id="class-bus-manager-private-method-create-beat-fx-instance"></a></p>
+<p><code>AudioEffect</code> <strong>_create_beat_fx_instance</strong>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>)  <a href="#class-bus-manager-private-method-create-beat-fx-instance">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-add-beat-fx"></a></p>
+<p><strong>add_beat_fx</strong>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)  <a href="#class-bus-manager-method-add-beat-fx">🔗</a></p>
+<p>Adds or replaces beat FX on the selected track bus.</p>
+<hr />
+<p><a id="class-bus-manager-method-remove-beat-fx"></a></p>
+<p><strong>remove_beat_fx</strong>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)  <a href="#class-bus-manager-method-remove-beat-fx">🔗</a></p>
+<p>Removes beat FX from selected track bus.</p>
+<hr />
+<p><a id="class-bus-manager-method-toggle-beat-fx"></a></p>
+<p><strong>toggle_beat_fx</strong>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)  <a href="#class-bus-manager-method-toggle-beat-fx">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-is-beat-fx-active"></a></p>
+<p><code>bool</code> <strong>is_beat_fx_active</strong>(fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, channel: <code>int</code>)  <a href="#class-bus-manager-method-is-beat-fx-active">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-bus-manager-method-apply-beat-fx-level"></a></p>
+<p><strong>Apply_Beat_FX_Level</strong>(channel: <code>int</code>, alpha: <code>float</code>)  <a href="#class-bus-manager-method-apply-beat-fx-level">🔗</a></p>
+<p>Beat FX “power” knob: alpha 0 = no audible effect (like off), alpha 1 = full effect. Call every frame from Controller</p>
+<hr />
+<p><a id="class-bus-manager-private-method-set-beat-fx-effect-level"></a></p>
+<p><strong>_set_beat_fx_effect_level</strong>(effect: <code>AudioEffect</code>, fx_type: <a href="#enum-bus-manager-e-beat-fx-type">E_BEAT_FX_TYPE</a>, alpha: <code>float</code>, channel: <code>int</code> = 0)  <a href="#class-bus-manager-private-method-set-beat-fx-effect-level">🔗</a></p>
+<p>Per-effect “amount” so that alpha 0 = inaudible, alpha 1 = full. Effect-specific parameter scaling</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

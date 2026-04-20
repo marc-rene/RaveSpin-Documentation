@@ -1,0 +1,2498 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://marc-rene.github.io/RaveSpin-Documentation/Codebase/DJ%20Controller/Controls/Knob_Control_Class/">
+      
+      
+        <link rel="prev" href="../Base_Control_Class/">
+      
+      
+        <link rel="next" href="../Performance_Pad_Control_Class/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Knob Control Class - RaveSpin XR</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#knob_control" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="RaveSpin XR" class="md-header__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RaveSpin XR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Knob Control Class
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="RaveSpin XR" class="md-nav__button md-logo" aria-label="RaveSpin XR" data-md-component="logo">
+      <span class="rave-spin-logo">
+  <span>Rave</span>
+  <span>Spin</span>
+</span>
+    </a>
+    RaveSpin XR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codebase
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Codebase
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Addons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Addons/Waveform%20Generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveform Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Album_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Album Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Artist%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artist Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Audio%20Metadata%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio Metadata Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Bus%20Manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Song%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Song Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Properties
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Properties
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Properties/Genre%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Genre Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Properties/Music%20Key%20Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Key Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Audio/Properties/Track%20Origins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Origins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DJ Controller
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DJ_Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DJ Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Base_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Performance_Pad_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Pad Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Slider_Control_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slider Control Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Global
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Player_Finger_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Player Finger Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Scripts_Arena_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scripts Arena Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Global/Startxr_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startxr Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Librebox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Language_Manager_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Manager Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Ui_Librebox_Components_Recording_Gd_Recording_Gd_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ui Librebox Components Recording Gd Recording Gd Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_4" id="__nav_3_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Active_Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Bpm_Spinner_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bpm Spinner Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Db_Meter_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Db Meter Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Hub/Librebox_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_5" id="__nav_3_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Add_Track_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Track Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Librebox_Trackselection_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Librebox Trackselection Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Track_Card_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Card Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Librebox/Track%20Management/Trackdeleteconfirmui_Class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trackdeleteconfirmui Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-descriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Descriptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- DO NOT EDIT THIS FILE!!! -->
+<!-- Generated automatically from Godot engine sources. -->
+<!-- Generator: https://github.com/godotengine/godot/tree/master/doc/tools/make_rst.py. -->
+<!-- XML source: https://github.com/godotengine/godot/tree/master/../RaveSpin/Documentation/gen_docs/Knob_Control.xml. -->
+
+<p><a id="class-knob-control"></a></p>
+<h1 id="knob_control">Knob_Control</h1>
+<p><strong>Inherits:</strong> <code>Node3D</code></p>
+<p>There is currently no description for this class. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<h2 id="properties">Properties</h2>
+<table>
+<thead>
+<tr>
+<th><code>bool</code></th>
+<th><a href="#class-knob-control-property-all-good">all_good</a></th>
+<th><code>false</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-value">Value</a></td>
+<td><code>0.5</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-slider-spawn-tween-seconds">slider_spawn_tween_seconds</a></td>
+<td><code>0.12</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-slider-despawn-tween-seconds">slider_despawn_tween_seconds</a></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-slider-far-distance-meters">slider_far_distance_meters</a></td>
+<td><code>0.25</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-slider-far-timeout-seconds">slider_far_timeout_seconds</a></td>
+<td><code>5.0</code></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-knob-control-property-knob-label-key">knob_label_key</a></td>
+<td><code>"KEY_KNOB_NAME"</code></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-knob-control-property-knob-memory-key">knob_memory_key</a></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><a href="#enum-knob-control-e-knob-value-display-mode">E_Knob_Value_Display_Mode</a></td>
+<td><a href="#class-knob-control-property-value-display-mode">value_display_mode</a></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-knob-control-property-normalized-decimal-places">normalized_decimal_places</a></td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><a href="#class-knob-control-property-decibel-decimal-places">decibel_decimal_places</a></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-decibel-linear-min">decibel_linear_min</a></td>
+<td><code>0.001</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-decibel-linear-max">decibel_linear_max</a></td>
+<td><code>2.0</code></td>
+</tr>
+<tr>
+<td><code>Variant</code></td>
+<td><a href="#class-knob-control-property-active">active</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>Quaternion</code></td>
+<td><a href="#class-knob-control-property-min-quat">min_quat</a></td>
+<td><code>Quaternion(0, 0, 0, 1)</code></td>
+</tr>
+<tr>
+<td><code>Quaternion</code></td>
+<td><a href="#class-knob-control-property-max-quat">max_quat</a></td>
+<td><code>Quaternion(0, 0, 0, 1)</code></td>
+</tr>
+<tr>
+<td><code>Area3D</code></td>
+<td><a href="#class-knob-control-property-hand-ref">hand_ref</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Node3D</code></td>
+<td><a href="#class-knob-control-property-activation-area">activation_area</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>Node3D</code></td>
+<td><a href="#class-knob-control-property-slider-global-spawn-node">slider_global_spawn_node</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><code>BoxShape3D</code></td>
+<td><a href="#class-knob-control-property-slider-global-spawn-node-col-box">slider_global_spawn_node_col_box</a></td>
+<td><code>&lt;unknown&gt;</code></td>
+</tr>
+<tr>
+<td><a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a></td>
+<td><a href="#class-knob-control-property-current-slider-l">current_slider_L</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a></td>
+<td><a href="#class-knob-control-property-current-slider-r">current_slider_R</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-knob-control-property-current-knob-l">current_knob_L</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="#class-knob-control">Knob_Control</a></td>
+<td><a href="#class-knob-control-property-current-knob-r">current_knob_R</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-knob-control-property-slider-closing-l">slider_closing_L</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-knob-control-property-slider-closing-r">slider_closing_R</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-knob-control-property-slider-opening-l">slider_opening_L</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-knob-control-property-slider-opening-r">slider_opening_R</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><a href="#class-knob-control-property-popup-slider-pool-initialized">popup_slider_pool_initialized</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>Dictionary</code></td>
+<td><a href="#class-knob-control-property-remembered-knob-values">remembered_knob_values</a></td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-left-slider-far-timer-seconds">_left_slider_far_timer_seconds</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-right-slider-far-timer-seconds">_right_slider_far_timer_seconds</a></td>
+<td><code>0.0</code></td>
+</tr>
+<tr>
+<td><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-knob-control-property-left-index-finger-ref">_left_index_finger_ref</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-knob-control-property-right-index-finger-ref">_right_index_finger_ref</a></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-property-persistent-popup-value">_persistent_popup_value</a></td>
+<td><code>-1.0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="#class-knob-control-method-ok-now-ready">ok_NOW_ready</a>(yes: <code>bool</code> = true, is_left_hand: <code>bool</code> = true)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-method-updatealpha">UpdateAlpha</a>(new_alpha: <code>float</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-ready">_ready</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-on-activation-area-entered">_on_activation_area_entered</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-on-activation-area-exited">_on_activation_area_exited</a>(area: <code>Area3D</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-process">_process</a>(delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><a href="#class-knob-control-method-alpha-from-quat">alpha_from_quat</a>(q: <code>Quaternion</code>, q_min: <code>Quaternion</code>, q_max: <code>Quaternion</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-show-popup-slider">_show_popup_slider</a>(use_right_slider: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-on-popup-slider-request-close">_on_popup_slider_request_close</a>(use_right_slider: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-request-close-popup-slider">_request_close_popup_slider</a>(use_right_slider: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-close-current-slider-if-other-knob">_close_current_slider_if_other_knob</a>(use_right_slider: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-animate-slider-spawn">_animate_slider_spawn</a>(target_slider: <a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-set-popup-slider-active">_set_popup_slider_active</a>(target_slider: <a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a>, is_enabled: <code>bool</code>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-ensure-popup-slider-pool-initialized">_ensure_popup_slider_pool_initialized</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-animate-slider-despawn">_animate_slider_despawn</a>(target_slider: <a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-update-popup-slider-distance-timeout">_update_popup_slider_distance_timeout</a>(use_right_slider: <code>bool</code>, delta: <code>float</code>)</td>
+</tr>
+<tr>
+<td><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-knob-control-private-method-get-index-finger-for-side">_get_index_finger_for_side</a>(use_right_slider: <code>bool</code>)</td>
+</tr>
+<tr>
+<td><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a></td>
+<td><a href="#class-knob-control-private-method-find-index-finger-for-side">_find_index_finger_for_side</a>(use_right_slider: <code>bool</code>)</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-knob-control-private-method-get-knob-memory-id">_get_knob_memory_id</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-restore-remembered-value-if-any">_restore_remembered_value_if_any</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-remember-current-value">_remember_current_value</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-update-knob-value-label">_update_knob_value_label</a>()</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#class-knob-control-private-method-notification">_notification</a>(what: <code>int</code>)</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td><a href="#class-knob-control-private-method-get-formatted-value-text">_get_formatted_value_text</a>()</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="enumerations">Enumerations</h2>
+<p><a id="enum-knob-control-e-knob-value-display-mode"></a></p>
+<p>enum <strong>E_Knob_Value_Display_Mode</strong>: <a href="#enum-knob-control-e-knob-value-display-mode">🔗</a></p>
+<p><a id="class-knob-control-constant-normalized"></a></p>
+<p><a href="#enum-knob-control-e-knob-value-display-mode">E_Knob_Value_Display_Mode</a> <strong>NORMALIZED</strong> = <code>0</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<p><a id="class-knob-control-constant-decibel"></a></p>
+<p><a href="#enum-knob-control-e-knob-value-display-mode">E_Knob_Value_Display_Mode</a> <strong>DECIBEL</strong> = <code>1</code></p>
+<p>There is currently no description for this enum. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="constants">Constants</h2>
+<p><a id="class-knob-control-constant-slider-scene"></a></p>
+<p><strong>SLIDER_SCENE</strong> = <code>&lt;Object&gt;</code> <a href="#class-knob-control-constant-slider-scene">🔗</a></p>
+<p>There is currently no description for this constant. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="property-descriptions">Property Descriptions</h2>
+<p><a id="class-knob-control-property-all-good"></a></p>
+<p><code>bool</code> <strong>all_good</strong> = <code>false</code> <a href="#class-knob-control-property-all-good">🔗</a></p>
+<p>Runtime gate used by popup slider open/close transitions.</p>
+<hr />
+<p><a id="class-knob-control-property-value"></a></p>
+<p><code>float</code> <strong>Value</strong> = <code>0.5</code> <a href="#class-knob-control-property-value">🔗</a></p>
+<p>Current knob value in normalized range (0..1).</p>
+<hr />
+<p><a id="class-knob-control-property-slider-spawn-tween-seconds"></a></p>
+<p><code>float</code> <strong>slider_spawn_tween_seconds</strong> = <code>0.12</code> <a href="#class-knob-control-property-slider-spawn-tween-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-despawn-tween-seconds"></a></p>
+<p><code>float</code> <strong>slider_despawn_tween_seconds</strong> = <code>0.1</code> <a href="#class-knob-control-property-slider-despawn-tween-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-far-distance-meters"></a></p>
+<p><code>float</code> <strong>slider_far_distance_meters</strong> = <code>0.25</code> <a href="#class-knob-control-property-slider-far-distance-meters">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-far-timeout-seconds"></a></p>
+<p><code>float</code> <strong>slider_far_timeout_seconds</strong> = <code>5.0</code> <a href="#class-knob-control-property-slider-far-timeout-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-knob-label-key"></a></p>
+<p><code>String</code> <strong>knob_label_key</strong> = <code>"KEY_KNOB_NAME"</code> <a href="#class-knob-control-property-knob-label-key">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-knob-memory-key"></a></p>
+<p><code>String</code> <strong>knob_memory_key</strong> = <code>""</code> <a href="#class-knob-control-property-knob-memory-key">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-value-display-mode"></a></p>
+<p><a href="#enum-knob-control-e-knob-value-display-mode">E_Knob_Value_Display_Mode</a> <strong>value_display_mode</strong> = <code>0</code> <a href="#class-knob-control-property-value-display-mode">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-normalized-decimal-places"></a></p>
+<p><code>int</code> <strong>normalized_decimal_places</strong> = <code>2</code> <a href="#class-knob-control-property-normalized-decimal-places">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-decibel-decimal-places"></a></p>
+<p><code>int</code> <strong>decibel_decimal_places</strong> = <code>1</code> <a href="#class-knob-control-property-decibel-decimal-places">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-decibel-linear-min"></a></p>
+<p><code>float</code> <strong>decibel_linear_min</strong> = <code>0.001</code> <a href="#class-knob-control-property-decibel-linear-min">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-decibel-linear-max"></a></p>
+<p><code>float</code> <strong>decibel_linear_max</strong> = <code>2.0</code> <a href="#class-knob-control-property-decibel-linear-max">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-active"></a></p>
+<p><code>Variant</code> <strong>active</strong> = <code>false</code> <a href="#class-knob-control-property-active">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-min-quat"></a></p>
+<p><code>Quaternion</code> <strong>min_quat</strong> = <code>Quaternion(0, 0, 0, 1)</code> <a href="#class-knob-control-property-min-quat">🔗</a></p>
+<p>Local-space min/max rotations used to map value to knob orientation.</p>
+<hr />
+<p><a id="class-knob-control-property-max-quat"></a></p>
+<p><code>Quaternion</code> <strong>max_quat</strong> = <code>Quaternion(0, 0, 0, 1)</code> <a href="#class-knob-control-property-max-quat">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-hand-ref"></a></p>
+<p><code>Area3D</code> <strong>hand_ref</strong> <a href="#class-knob-control-property-hand-ref">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-activation-area"></a></p>
+<p><code>Node3D</code> <strong>activation_area</strong> = <code>&lt;unknown&gt;</code> <a href="#class-knob-control-property-activation-area">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-global-spawn-node"></a></p>
+<p><code>Node3D</code> <strong>slider_global_spawn_node</strong> = <code>&lt;unknown&gt;</code> <a href="#class-knob-control-property-slider-global-spawn-node">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-global-spawn-node-col-box"></a></p>
+<p><code>BoxShape3D</code> <strong>slider_global_spawn_node_col_box</strong> = <code>&lt;unknown&gt;</code> <a href="#class-knob-control-property-slider-global-spawn-node-col-box">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-current-slider-l"></a></p>
+<p><a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a> <strong>current_slider_L</strong> = <code>null</code> <a href="#class-knob-control-property-current-slider-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-current-slider-r"></a></p>
+<p><a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a> <strong>current_slider_R</strong> = <code>null</code> <a href="#class-knob-control-property-current-slider-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-current-knob-l"></a></p>
+<p><a href="#class-knob-control">Knob_Control</a> <strong>current_knob_L</strong> = <code>null</code> <a href="#class-knob-control-property-current-knob-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-current-knob-r"></a></p>
+<p><a href="#class-knob-control">Knob_Control</a> <strong>current_knob_R</strong> = <code>null</code> <a href="#class-knob-control-property-current-knob-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-closing-l"></a></p>
+<p><code>bool</code> <strong>slider_closing_L</strong> = <code>false</code> <a href="#class-knob-control-property-slider-closing-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-closing-r"></a></p>
+<p><code>bool</code> <strong>slider_closing_R</strong> = <code>false</code> <a href="#class-knob-control-property-slider-closing-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-opening-l"></a></p>
+<p><code>bool</code> <strong>slider_opening_L</strong> = <code>false</code> <a href="#class-knob-control-property-slider-opening-l">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-slider-opening-r"></a></p>
+<p><code>bool</code> <strong>slider_opening_R</strong> = <code>false</code> <a href="#class-knob-control-property-slider-opening-r">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-popup-slider-pool-initialized"></a></p>
+<p><code>bool</code> <strong>popup_slider_pool_initialized</strong> = <code>false</code> <a href="#class-knob-control-property-popup-slider-pool-initialized">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-remembered-knob-values"></a></p>
+<p><code>Dictionary</code> <strong>remembered_knob_values</strong> = <code>{}</code> <a href="#class-knob-control-property-remembered-knob-values">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-left-slider-far-timer-seconds"></a></p>
+<p><code>float</code> <strong>_left_slider_far_timer_seconds</strong> = <code>0.0</code> <a href="#class-knob-control-property-left-slider-far-timer-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-right-slider-far-timer-seconds"></a></p>
+<p><code>float</code> <strong>_right_slider_far_timer_seconds</strong> = <code>0.0</code> <a href="#class-knob-control-property-right-slider-far-timer-seconds">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-left-index-finger-ref"></a></p>
+<p><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>_left_index_finger_ref</strong> = <code>null</code> <a href="#class-knob-control-property-left-index-finger-ref">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-right-index-finger-ref"></a></p>
+<p><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>_right_index_finger_ref</strong> = <code>null</code> <a href="#class-knob-control-property-right-index-finger-ref">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-property-persistent-popup-value"></a></p>
+<p><code>float</code> <strong>_persistent_popup_value</strong> = <code>-1.0</code> <a href="#class-knob-control-property-persistent-popup-value">🔗</a></p>
+<p>There is currently no description for this property. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<h2 id="method-descriptions">Method Descriptions</h2>
+<p><a id="class-knob-control-method-ok-now-ready"></a></p>
+<p><strong>ok_NOW_ready</strong>(yes: <code>bool</code> = true, is_left_hand: <code>bool</code> = true) <a href="#class-knob-control-method-ok-now-ready">🔗</a></p>
+<p>Updates runtime gate for popup slider transitions.</p>
+<hr />
+<p><a id="class-knob-control-method-updatealpha"></a></p>
+<p><strong>UpdateAlpha</strong>(new_alpha: <code>float</code>) <a href="#class-knob-control-method-updatealpha">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-ready"></a></p>
+<p><strong>_ready</strong>() <a href="#class-knob-control-private-method-ready">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-on-activation-area-entered"></a></p>
+<p><strong>_on_activation_area_entered</strong>(area: <code>Area3D</code>) <a href="#class-knob-control-private-method-on-activation-area-entered">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-on-activation-area-exited"></a></p>
+<p><strong>_on_activation_area_exited</strong>(area: <code>Area3D</code>) <a href="#class-knob-control-private-method-on-activation-area-exited">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-process"></a></p>
+<p><strong>_process</strong>(delta: <code>float</code>) <a href="#class-knob-control-private-method-process">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-method-alpha-from-quat"></a></p>
+<p><code>float</code> <strong>alpha_from_quat</strong>(q: <code>Quaternion</code>, q_min: <code>Quaternion</code>, q_max: <code>Quaternion</code>) <a href="#class-knob-control-method-alpha-from-quat">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-show-popup-slider"></a></p>
+<p><strong>_show_popup_slider</strong>(use_right_slider: <code>bool</code>) <a href="#class-knob-control-private-method-show-popup-slider">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-on-popup-slider-request-close"></a></p>
+<p><strong>_on_popup_slider_request_close</strong>(use_right_slider: <code>bool</code>) <a href="#class-knob-control-private-method-on-popup-slider-request-close">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-request-close-popup-slider"></a></p>
+<p><strong>_request_close_popup_slider</strong>(use_right_slider: <code>bool</code>) <a href="#class-knob-control-private-method-request-close-popup-slider">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-close-current-slider-if-other-knob"></a></p>
+<p><strong>_close_current_slider_if_other_knob</strong>(use_right_slider: <code>bool</code>) <a href="#class-knob-control-private-method-close-current-slider-if-other-knob">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-animate-slider-spawn"></a></p>
+<p><strong>_animate_slider_spawn</strong>(target_slider: <a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a>) <a href="#class-knob-control-private-method-animate-slider-spawn">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-set-popup-slider-active"></a></p>
+<p><strong>_set_popup_slider_active</strong>(target_slider: <a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a>, is_enabled: <code>bool</code>) <a href="#class-knob-control-private-method-set-popup-slider-active">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-ensure-popup-slider-pool-initialized"></a></p>
+<p><strong>_ensure_popup_slider_pool_initialized</strong>() <a href="#class-knob-control-private-method-ensure-popup-slider-pool-initialized">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-animate-slider-despawn"></a></p>
+<p><strong>_animate_slider_despawn</strong>(target_slider: <a href="../Slider_Control_Class/#class-slider-control">Slider_Control</a>) <a href="#class-knob-control-private-method-animate-slider-despawn">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-update-popup-slider-distance-timeout"></a></p>
+<p><strong>_update_popup_slider_distance_timeout</strong>(use_right_slider: <code>bool</code>, delta: <code>float</code>) <a href="#class-knob-control-private-method-update-popup-slider-distance-timeout">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-get-index-finger-for-side"></a></p>
+<p><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>_get_index_finger_for_side</strong>(use_right_slider: <code>bool</code>) <a href="#class-knob-control-private-method-get-index-finger-for-side">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-find-index-finger-for-side"></a></p>
+<p><a href="../../../Global/Player_Finger_Class/#class-player-finger">Player_Finger</a> <strong>_find_index_finger_for_side</strong>(use_right_slider: <code>bool</code>) <a href="#class-knob-control-private-method-find-index-finger-for-side">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-get-knob-memory-id"></a></p>
+<p><code>String</code> <strong>_get_knob_memory_id</strong>() <a href="#class-knob-control-private-method-get-knob-memory-id">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-restore-remembered-value-if-any"></a></p>
+<p><strong>_restore_remembered_value_if_any</strong>() <a href="#class-knob-control-private-method-restore-remembered-value-if-any">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-remember-current-value"></a></p>
+<p><strong>_remember_current_value</strong>() <a href="#class-knob-control-private-method-remember-current-value">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-update-knob-value-label"></a></p>
+<p><strong>_update_knob_value_label</strong>() <a href="#class-knob-control-private-method-update-knob-value-label">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-notification"></a></p>
+<p><strong>_notification</strong>(what: <code>int</code>) <a href="#class-knob-control-private-method-notification">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+<hr />
+<p><a id="class-knob-control-private-method-get-formatted-value-text"></a></p>
+<p><code>String</code> <strong>_get_formatted_value_text</strong>() <a href="#class-knob-control-private-method-get-formatted-value-text">🔗</a></p>
+<p>There is currently no description for this method. Please help us by <a href="https://contributing.godotengine.org/en/latest/documentation/class_reference.html">contributing one</a>!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
